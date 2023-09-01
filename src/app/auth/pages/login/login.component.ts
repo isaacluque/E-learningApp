@@ -24,10 +24,10 @@ export class LoginComponent {
     this.authService.login(email, password)
       .subscribe( {
         next: () => console.log('Todo bien'),
-        error: (msg) =>{
+        error: (error) =>{
           Swal.fire({
             title: 'Error',
-            text: msg,
+            text: error,
             icon: 'error',
             iconColor: 'white',
             background: '#d12609',

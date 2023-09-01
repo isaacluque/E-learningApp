@@ -36,7 +36,7 @@ export class AuthServiceService {
           localStorage.setItem('token', token);
       }),
       map( () => true ),
-      catchError( err => throwError( () => (err.error.message) ))
+      catchError( err => throwError( () => (err.error.msg) ))
     )
     }
 
