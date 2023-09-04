@@ -23,37 +23,47 @@
             >
           </div>
         </div>
-        <form [formGroup]="myForm" (ngSubmit)="login()">
+        <form [formGroup]="myForm" (ngSubmit)="login()" autocomplete="off">
           <div class="mb-3">
-            <input
-              class="form-control"
-              type="email"
-              placeholder="Email address"
-              formControlName="email"
-            />
+            <mat-form-field class="custom-form-field">
+              <mat-label>Enter your email</mat-label>
+              <input formControlName="email" matInput placeholder="pat@example.com" required>
+            </mat-form-field>
           </div>
           <div class="mb-3">
-            <input
-              class="form-control"
-              type="password"
-              placeholder="Password"
-              formControlName="password"
-            />
+            <mat-form-field class="custom-form-field">
+              <mat-label>Enter your password</mat-label>
+              <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              </mat-form-field>
           </div>
-          <div class="row flex-between-center">
+          <!-- <div class="row flex-between-center">
             <div class="col-auto">
               <div class="form-check mb-0">
                 <input
                   class="form-check-input"
                   type="checkbox"
                   id="basic-checkbox"
-                  checked="checked"
+                  checked="disabled"
+
                 />
                 <label class="form-check-label mb-0" for="basic-checkbox"
                   >Remember me</label
                 >
               </div>
-            </div>
+            </div> -->
+            <!-- </div> -->
+            <div class="mb-3">
+              <button
+              class="btn btn-primary d-block w-100 mt-3"
+              type="submit"
+              name="submit"
+              [disabled]="myForm.invalid"
+              >
+              Log in
+            </button>
             <div class="col-auto">
               <a
                 class="fs--1"
@@ -61,16 +71,6 @@
                 >Forgot Password?</a
               >
             </div>
-          </div>
-          <div class="mb-3">
-            <button
-              class="btn btn-primary d-block w-100 mt-3"
-              type="submit"
-              name="submit"
-              [disabled]="myForm.invalid"
-            >
-              Log in
-            </button>
           </div>
         </form>
         <!-- <div class="position-relative mt-4">
