@@ -20,69 +20,16 @@
           </div>
         </div>
         <form>
-          <div class="mb-3">
-            <input
-              class="form-control"
-              type="text"
-              autocomplete="on"
-              placeholder="Name"
-            />
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-secondary" >Student</button>
+
+            <button type="button" class="btn btn-secondary" >Pyme</button>
           </div>
-          <div class="mb-3">
-            <input
-              class="form-control"
-              type="text"
-              autocomplete="on"
-              placeholder="Username"
-            />
-          </div>
-          <div class="mb-3">
-            <input
-              class="form-control"
-              type="email"
-              autocomplete="on"
-              placeholder="Email address"
-            />
-          </div>
-          <div class="row gx-2">
-            <div class="mb-3 col-sm-6">
-              <input
-                class="form-control"
-                type="password"
-                autocomplete="on"
-                placeholder="Password"
-              />
-            </div>
-            <div class="mb-3 col-sm-6">
-              <input
-                class="form-control"
-                type="password"
-                autocomplete="on"
-                placeholder="Confirm Password"
-              />
-            </div>
-          </div>
-          <!-- <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="basic-register-checkbox"
-            />
-            <label class="form-label" for="basic-register-checkbox"
-              >I accept the <a href="#!">terms </a>and
-              <a href="#!">privacy policy</a></label
-            >
-          </div> -->
-          <div class="mb-3">
-            <button
-              class="btn btn-primary d-block w-100 mt-3"
-              type="submit"
-              name="submit"
-            >
-              Register
-            </button>
-          </div>
+
+          <app-student-register ></app-student-register>
+          <app-pyme-register  ></app-pyme-register>
         </form>
+
         <!-- <div class="position-relative mt-4">
           <hr />
           <div class="divider-content-center">or register with</div>
@@ -95,3 +42,6 @@
     </div>
   </div>
 </div>
+
+<!-- <app-student-register *ngIf="student === true"></app-student-register> -->
+<!-- <app-pyme-register *ngIf="pyme"></app-pyme-register> -->

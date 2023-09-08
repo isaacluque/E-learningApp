@@ -7,13 +7,17 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { StudentRegisterComponent } from './pages/register/components/student-register/student-register.component';
+import { PymeRegisterComponent } from './pages/register/components/pyme-register/pyme-register.component';
 
 
 @NgModule({
   declarations: [
     AuthLayoutComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    StudentRegisterComponent,
+    PymeRegisterComponent,
   ],
   imports: [
     CommonModule,
