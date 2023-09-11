@@ -20,14 +20,21 @@
           </div>
         </div>
         <form>
-          <div class="d-grid gap-2">
-            <button type="button" class="btn btn-secondary" >Student</button>
 
-            <button type="button" class="btn btn-secondary" >Pyme</button>
+
+
+          <div class="d-grid gap-2">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalStudent">
+              Normal Student
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalPYME">
+              Student PYME
+            </button>
           </div>
 
-          <app-student-register ></app-student-register>
-          <app-pyme-register  ></app-pyme-register>
+          <app-student-register></app-student-register>
+          <app-pyme-register></app-pyme-register>
         </form>
 
         <!-- <div class="position-relative mt-4">
