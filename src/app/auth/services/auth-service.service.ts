@@ -35,10 +35,14 @@ export class AuthServiceService {
           this._authStatus.set(AuthStatus.authenticated);
           localStorage.setItem('token', token);
       }),
-      map( () => true ),
+      map( resp => resp.ok ),
       catchError( err => throwError( () => (err.error.msg) ))
     )
-    }
+  }
+
+
+
+
 
   constructor() { }
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthServiceService } from '../../services/auth-service.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import * as customValidators from '../../shared/validators/validators';
 
 @Component({
   templateUrl: './login.component.html',
@@ -16,7 +17,7 @@ export class LoginComponent {
   hide = true;
 
   public myForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}$')]],
+    email: ['', [Validators.required, Validators.pattern(customValidators.emailPattern)]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
   })
 
