@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register.component';
 import { StudentRegisterComponent } from './components/student-register/student-register.component';
 import { PymeRegisterComponent } from './components/pyme-register/pyme-register.component';
+import { StudentComponent } from './components/student/student.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       {path: 'student-register', component: StudentRegisterComponent},
       {path: 'pyme-register', component: PymeRegisterComponent},
+      {path: 'student', component: StudentComponent},
       {path: '**', redirectTo: ''},
     ]
   }

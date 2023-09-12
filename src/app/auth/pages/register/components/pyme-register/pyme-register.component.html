@@ -7,7 +7,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        PYME
+        <div class="mb-3">
+          <form>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Enter your email</mat-label>
+              <input matInput formControlName="email" placeholder="pat@example.com" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Confirm Password</mat-label>
+              <input matInput formControlName="confirm_password" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="username" placeholder="KarlaSmith" autocomplete="off"required>
+            </mat-form-field>
+          </form>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
