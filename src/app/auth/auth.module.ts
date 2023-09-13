@@ -17,6 +17,7 @@ import { PymeRegisterComponent } from './pages/register/components/pyme-register
     LoginComponent,
     RegisterComponent,
     StudentRegisterComponent,
+    PymeRegisterComponent,
   ],
   imports: [
     CommonModule,

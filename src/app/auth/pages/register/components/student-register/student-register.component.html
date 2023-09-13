@@ -1,5 +1,4 @@
 <!-- Modal -->
-<form>
   <div class="modal fade" id="ModalStudent" [ngClass]="{ 'show': mostrarModal }" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-keyboard="false" aria-hidden="true" data-base-backdrop="false">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -39,11 +38,10 @@
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cerrarModal()">
                 Cancel
               </button>
-              <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Register</button>
+              <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid" data-bs-dismiss="modal">Register</button>
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-</form>

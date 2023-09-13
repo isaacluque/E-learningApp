@@ -1,5 +1,5 @@
 <!-- Modal -->
-<!-- <div class="modal fade" id="ModalPYME" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+<div class="modal fade" id="ModalPYME" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -23,7 +23,29 @@
             </mat-form-field>
             <mat-form-field class="custom-form-field">
               <mat-label>Username</mat-label>
-              <input matInput formControlName="username" placeholder="KarlaSmith" autocomplete="off"required>
+              <input matInput formControlName="username" placeholder="CompanyExample" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Telephone</mat-label>
+              <input matInput formControlName="telephone" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Company Name</mat-label>
+              <input matInput formControlName="company_name" placeholder="Company Example" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Company Size</mat-label>
+              <mat-select formControlName="company_size" required>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Location</mat-label>
+              <mat-select formControlName="location" required>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
             </mat-form-field>
           </form>
         </div>
@@ -34,5 +56,5 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
