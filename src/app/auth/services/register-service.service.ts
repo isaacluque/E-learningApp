@@ -34,7 +34,7 @@ export class RegisterServiceService {
 
       return this.http.post<NormalStudent>(url, body)
       .pipe(
-        tap( ({DBStudent, DBStudentDetails, ok, msg}) => {
+        tap( ({DBStudent, DBStudentDetails}) => {
           this._registerDBStudent.set(DBStudent);
           this._registerDBStudentDetails.set(DBStudentDetails);
         }),

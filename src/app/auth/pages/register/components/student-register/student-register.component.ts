@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterServiceService } from 'src/app/auth/services/register-service.service';
 import * as customValidators from '../../../../shared/validators/validators';
 import Swal from 'sweetalert2';
 import { ValidatorsService } from 'src/app/auth/shared/services/validators-service.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-student-register',
@@ -13,10 +14,13 @@ import { ValidatorsService } from 'src/app/auth/shared/services/validators-servi
 })
 export class StudentRegisterComponent{
 
+  @Input() mostrarModal = false;
+
   private fb = inject(FormBuilder);
   private registerService = inject(RegisterServiceService);
   private router = inject(Router);
   private validatorsService = inject(ValidatorsService);
+
 
   public myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(customValidators.emailPattern)]],
@@ -28,6 +32,9 @@ export class StudentRegisterComponent{
   }, {
     validators: this.validatorsService.passwordValidator('password', 'confirm_password'),
   });
+
+    // Subscripción
+    registroSubs!: Subscription;
 
   postStudentNormal(){
     const {email, password, confirm_password, username, first_name, last_name} = this.myForm.value;
@@ -69,5 +76,9 @@ export class StudentRegisterComponent{
           })
         }
       })
+  }
+
+  cerrarModal() {
+    this.mostrarModal = false;
   }
 }

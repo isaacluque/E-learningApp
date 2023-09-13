@@ -8,6 +8,10 @@ import { StudentRegisterComponent } from './components/student-register/student-
 })
 export class RegisterComponent {
 
+  mostrarModal = false;
 
+  abrirModal() {
+    this.mostrarModal = true;
+  }
 
 }

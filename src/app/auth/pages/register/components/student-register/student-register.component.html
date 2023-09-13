@@ -1,11 +1,11 @@
 <!-- Modal -->
 <form>
-  <div class="modal fade" id="ModalStudent" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-keyboard="false" aria-hidden="true" data-base-backdrop="false">
+  <div class="modal fade" id="ModalStudent" [ngClass]="{ 'show': mostrarModal }" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-keyboard="false" aria-hidden="true" data-base-backdrop="false">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Normal Student</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" (click)="cerrarModal()" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form [formGroup]="myForm" (ngSubmit)="postStudentNormal()" autocomplete="off">
@@ -36,7 +36,7 @@
               </mat-form-field>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cerrarModal()">
                 Cancel
               </button>
               <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Register</button>
