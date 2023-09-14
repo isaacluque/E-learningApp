@@ -20,20 +20,15 @@
           </div>
         </div>
         <form>
-
-
-
           <div class="d-grid gap-2">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalStudent" (click)="abrirModal()">
               Normal Student
             </button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalPYME">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalPYME" (click)="abrirModal()">
               Student PYME
             </button>
           </div>
-
-
         </form>
 
         <!-- <div class="position-relative mt-4">
@@ -50,7 +45,7 @@
 </div>
 
 <app-student-register [mostrarModal]="mostrarModal"></app-student-register>
-<app-pyme-register></app-pyme-register>
+<app-pyme-register [mostrarModal]="mostrarModal"></app-pyme-register>
 
 
 

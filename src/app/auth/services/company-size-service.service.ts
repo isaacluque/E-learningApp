@@ -14,7 +14,7 @@ export class CompanySizeServiceService {
   private http = inject(HttpClient);
 
   getCompanySizes(): Observable<CompanySize> {
-    const url: string = `${this.baseURL}/location`;
+    const url: string = `${this.baseURL}/company-size`;
 
     return this.http.get<CompanySize>(url)
       .pipe(

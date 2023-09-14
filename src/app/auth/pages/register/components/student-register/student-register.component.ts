@@ -79,6 +79,7 @@ export class StudentRegisterComponent{
   }
 
   cerrarModal() {
+    this.myForm.reset();
     this.mostrarModal = false;
   }
 }

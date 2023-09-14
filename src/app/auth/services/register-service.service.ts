@@ -3,7 +3,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { environment } from 'src/app/environments/environments';
 import { DBStudent, DBStudentDetails, NormalStudent } from '../interfaces/normal-student.interface';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { DBPYMEDetails, PYMEStudent } from '../interfaces/pyme-student.interface';
+import { DBPYMEDetails, DBStudents, PYMEStudent } from '../interfaces/pyme-student.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,15 @@ export class RegisterServiceService {
 
   private _registerDBStudent = signal<DBStudent | null>(null);
 
+  private _registerDBStudents = signal<DBStudents | null>(null);
+
   private _registerDBStudentDetails = signal<DBStudentDetails | null>(null);
 
   private _registerDBPYMEDetails = signal<DBPYMEDetails | null>(null);
 
   public registerDBStudent = computed(() => this._registerDBStudent);
+
+  public registerDBStudents = computed(()=> this._registerDBStudents)
 
   public registerDBStudentDetails = computed(() => this._registerDBStudentDetails);
 
@@ -66,8 +70,8 @@ export class RegisterServiceService {
 
     return this.http.post<PYMEStudent>(url, body)
       .pipe(
-        tap(({DBStudent, DBPYMEDetails}) => {
-          this._registerDBStudent.set(DBStudent);
+        tap(({DBStudents, DBPYMEDetails}) => {
+          this._registerDBStudent.set(DBStudents);
           this._registerDBPYMEDetails.set(DBPYMEDetails);
         }),
         catchError(err => throwError(() => (err.error.msg)))

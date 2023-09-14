@@ -1,5 +1,5 @@
 import { Locations } from './../../../../interfaces/locations.interfaces';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocationServiceService } from 'src/app/auth/services/location-service.service';
@@ -9,6 +9,7 @@ import * as customValidators from '../../../../shared/validators/validators';
 import { CompanySizeElement } from 'src/app/auth/interfaces/company-size.interface';
 import { Location } from '../../../../interfaces/locations.interfaces';
 import { CompanySizeServiceService } from 'src/app/auth/services/company-size-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pyme-register',
@@ -16,6 +17,8 @@ import { CompanySizeServiceService } from 'src/app/auth/services/company-size-se
   styleUrls: ['./pyme-register.component.css']
 })
 export class PymeRegisterComponent implements OnInit {
+  @Input() mostrarModal = false;
+
   ngOnInit(): void {
     this.loadLocation(),
     this.loadCompanySize()
@@ -41,6 +44,48 @@ export class PymeRegisterComponent implements OnInit {
     validators: this.validatorsService.passwordValidator('password', 'confirm_password'),
   })
 
+  postStudentPYME() {
+    const {email, password, confirm_password, username, phone_number, company_name, company_size, location} = this.myForm.value
+
+    this.registerService.postStudentPYME(email, password, confirm_password, username, phone_number, company_name, company_size, location)
+      .subscribe({
+        next: (resp) => {
+          if(resp && resp.msg){
+            Swal.fire({
+              title: '¡Éxito!',
+              text: resp.msg,
+              icon: 'success',
+              iconColor: 'white',
+              background: '#a5dc86',
+              color: 'white',
+              toast: true,
+              position: 'top-right',
+              showConfirmButton: false,
+              timer: 4500,
+              timerProgressBar: true,
+            })
+
+            this.router.navigateByUrl('/auth/login')
+          }
+        },
+        error: (error) => {
+          Swal.fire({
+            title: 'Error',
+            text: error,
+            icon: 'error',
+            iconColor: 'white',
+            background: '#d12609',
+            color: 'white',
+            toast: true,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 4500,
+            timerProgressBar: true,
+          })
+        }
+      })
+  }
+
   listlocation: Location[] = [];
   listcompanySize: CompanySizeElement[] = [];
 
@@ -57,5 +102,10 @@ export class PymeRegisterComponent implements OnInit {
 
       this.listcompanySize = resp.companySize!;
     });
+  }
+
+  cerrarModal() {
+    this.myForm.reset();
+    this.mostrarModal = false;
   }
 }

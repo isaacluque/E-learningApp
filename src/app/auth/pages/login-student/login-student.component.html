@@ -12,7 +12,7 @@
       <div class="card-body p-4 p-sm-5">
         <div class="row flex-between-center mb-2">
           <div class="col-auto">
-            <h5>Log in</h5>
+            <h5>Log in Student</h5>
           </div>
           <div class="col-auto fs--1 text-600">
             <span class="mb-0 undefined">or </span>
@@ -23,7 +23,7 @@
             >
           </div>
         </div>
-        <form [formGroup]="myForm" (ngSubmit)="login()" autocomplete="off">
+        <form [formGroup]="myForm" (ngSubmit)="loginStudent()" autocomplete="off">
           <div class="mb-3">
             <mat-form-field class="custom-form-field">
               <mat-label>Enter your email</mat-label>
@@ -39,22 +39,6 @@
               </button>
               </mat-form-field>
           </div>
-          <!-- <div class="row flex-between-center">
-            <div class="col-auto">
-              <div class="form-check mb-0">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="basic-checkbox"
-                  checked="disabled"
-
-                />
-                <label class="form-check-label mb-0" for="basic-checkbox"
-                  >Remember me</label
-                >
-              </div>
-            </div> -->
-            <!-- </div> -->
             <div class="mb-3">
               <button
               class="btn btn-primary d-block w-100 mt-3"
@@ -64,13 +48,18 @@
               >
               Log in
             </button>
-            <div class="col-auto">
-              <a
-                class="fs--1"
-                href="../../../pages/authentication/simple/forgot-password.html"
-                >Forgot Password?</a
-              >
+            <div class="row flex-between-center mb-2">
+              <div class="col-auto">
+                <a class="fs--1" href="../../../pages/authentication/simple/forgot-password.html">Forgot Password?</a>
+              </div>
+              <div class="col-auto fs--1 text-600">
+                <span class="mb-0 undefined">or </span>
+                <span><a routerLink="/auth/login-pyme">Log in with PYME</a></span>
+              </div>
             </div>
+          </div>
+          <div class="text-center">
+            <span><a routerLink="/auth/login-admin">Log in with Administrator</a></span>
           </div>
         </form>
         <!-- <div class="position-relative mt-4">

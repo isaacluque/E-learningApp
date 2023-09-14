@@ -1,14 +1,16 @@
 <!-- Modal -->
-<div class="modal fade" id="ModalPYME" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+<div class="modal fade" id="ModalPYME" [ngClass]="{ 'show': mostrarModal }" tabindex="-1"
+  aria-labelledby="exampleModalLabel2" data-bs-keyboard="false" aria-hidden="true" data-base-backdrop="false">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel2">PYME Student</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" (click)="cerrarModal()" data-bs-dismiss="modal"
+          aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="mb-3">
-          <form>
+        <form [formGroup]="myForm" (ngSubmit)="postStudentPYME()" autocomplete="off">
+          <div class="mb-3">
             <mat-form-field class="custom-form-field">
               <mat-label>Enter your email</mat-label>
               <input matInput formControlName="email" placeholder="pat@example.com" autocomplete="off" required>
@@ -27,7 +29,7 @@
             </mat-form-field>
             <mat-form-field class="custom-form-field">
               <mat-label>Telephone</mat-label>
-              <input matInput formControlName="telephone" autocomplete="off" required>
+              <input matInput formControlName="phone_number" autocomplete="off" required>
             </mat-form-field>
             <mat-form-field class="custom-form-field">
               <mat-label>Company Name</mat-label>
@@ -36,25 +38,34 @@
             <mat-form-field class="custom-form-field">
               <mat-label>Company Size</mat-label>
               <mat-select formControlName="company_size" required>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+                <div class="cdk-overlay-container"></div>
+                <ng-container *ngFor="let companysize of listcompanySize">
+                  <mat-option [value]="companysize.ID_TAMANO_EMPRESA">
+                    {{companysize.TAMANO_EMPRESA}}
+                  </mat-option>
+                </ng-container>
               </mat-select>
             </mat-form-field>
             <mat-form-field class="custom-form-field">
               <mat-label>Location</mat-label>
               <mat-select formControlName="location" required>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+                <div class="cdk-overlay-container"></div>
+                <ng-container *ngFor="let locations of listlocation">
+                  <mat-option [value]="locations.ID_UBICACION">
+                    {{locations.NOMBRE_CORTO}}
+                  </mat-option>
+                </ng-container>
               </mat-select>
             </mat-form-field>
-          </form>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+              (click)="cerrarModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid"
+              data-bs-dismiss="modal">Register</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-
