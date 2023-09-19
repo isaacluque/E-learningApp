@@ -1,63 +1,59 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { environment } from 'src/app/environments/environments';
-import { DBStudent, DBStudentDetails, NormalStudent } from '../interfaces/normal-student.interface';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { DBPYMEDetails, DBStudents, PYMEStudent } from '../interfaces/pyme-student.interface';
+import { User } from '../interfaces/user-login.interface';
+import { DBPYMEDetails, RegisterPyme } from '../interfaces/register-pyme.interface';
+import { RegisterStudent } from '../interfaces/register-student.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterServiceService {
 
+  //Get environment variable from URL
   private readonly baseURL: string = environment.baseURL;
 
+  //Injection of HttpClient
   private http = inject(HttpClient);
 
-  private _registerDBStudent = signal<DBStudent | null>(null);
+  //Signal for user interface to register
+  private _registerStudent = signal<User | null>(null);
 
-  private _registerDBStudents = signal<DBStudents | null>(null);
-
-  private _registerDBStudentDetails = signal<DBStudentDetails | null>(null);
-
+  //Signal for PYME detail interface to register
   private _registerDBPYMEDetails = signal<DBPYMEDetails | null>(null);
 
-  public registerDBStudent = computed(() => this._registerDBStudent);
-
-  public registerDBStudents = computed(()=> this._registerDBStudents)
-
-  public registerDBStudentDetails = computed(() => this._registerDBStudentDetails);
-
+  //Computed signals for changes to be made
+  public registerStudent = computed(() => this._registerStudent);
   public registerDBPYMEDetails = computed(() => this._registerDBPYMEDetails);
 
-  postStudentNormal(email: string, password: string, confirm_password: string, username: string, first_name: string, last_name: string): Observable<NormalStudent> {
+  registerStudentNormal(name: string, email: string, password: string, confirm_password: string, username: string): Observable<RegisterStudent> {
 
-    const url: string = `${this.baseURL}/register/student_normal`
+    const url: string = `${this.baseURL}/register/register-student`
 
     const body = {
+      name,
       email,
       password,
       confirm_password,
-      username,
-      first_name,
-      last_name
+      username
     };
 
-    return this.http.post<NormalStudent>(url, body)
+    return this.http.post<RegisterStudent>(url, body)
       .pipe(
-        tap(({ DBStudent, DBStudentDetails }) => {
-          this._registerDBStudent.set(DBStudent);
-          this._registerDBStudentDetails.set(DBStudentDetails);
+        tap(({ User }) => {
+          this._registerStudent.set(User);
         }),
         catchError(err => throwError(() => (err.error.msg)))
       )
   }
 
-  postStudentPYME(email: string, password: string, confirm_password: string, username: string, phone_number: string, company_name: string, company_size: number, location: number): Observable<PYMEStudent> {
+  registerPYME(name: string, email: string, password: string, confirm_password: string, username: string, phone_number: string, company_name: string, company_size: number, location: number): Observable<RegisterPyme> {
 
-    const url: string = `${this.baseURL}/register/student_pyme`;
+    const url: string = `${this.baseURL}/register/register-pyme`;
 
     const body = {
+      name,
       email,
       password,
       confirm_password,
@@ -68,17 +64,14 @@ export class RegisterServiceService {
       location
     }
 
-    return this.http.post<PYMEStudent>(url, body)
+    return this.http.post<RegisterPyme>(url, body)
       .pipe(
-        tap(({DBStudents, DBPYMEDetails}) => {
-          this._registerDBStudent.set(DBStudents);
+        tap(({DBPYMEDetails}) => {
           this._registerDBPYMEDetails.set(DBPYMEDetails);
         }),
         catchError(err => throwError(() => (err.error.msg)))
       )
   }
-
-
 
   constructor() { }
 }

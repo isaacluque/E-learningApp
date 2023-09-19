@@ -9,8 +9,8 @@ const routes: Routes = [
     path: '',
     component: RegisterComponent,
     children: [
-      {path: 'student-register', component: StudentRegisterComponent},
-      {path: 'pyme-register', component: PymeRegisterComponent},
+      {path: 'register-student', component: StudentRegisterComponent},
+      {path: 'register-pyme', component: PymeRegisterComponent},
       {path: '**', redirectTo: ''},
     ]
   }

@@ -1,4 +1,3 @@
-import { Locations } from './../../../../interfaces/locations.interfaces';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -39,15 +38,16 @@ export class PymeRegisterComponent implements OnInit {
     phone_number: ['', [Validators.required]],
     company_name: ['', [Validators.required]],
     company_size: ['', [Validators.required]],
-    location: ['', [Validators.required]]
+    location: ['', [Validators.required]],
+    name: ['', [Validators.required]]
   }, {
     validators: this.validatorsService.passwordValidator('password', 'confirm_password'),
   })
 
   postStudentPYME() {
-    const {email, password, confirm_password, username, phone_number, company_name, company_size, location} = this.myForm.value
+    const {name, email, password, confirm_password, username, phone_number, company_name, company_size, location} = this.myForm.value
 
-    this.registerService.postStudentPYME(email, password, confirm_password, username, phone_number, company_name, company_size, location)
+    this.registerService.registerPYME(name, email, password, confirm_password, username, phone_number, company_name, company_size, location)
       .subscribe({
         next: (resp) => {
           if(resp && resp.msg){

@@ -1,11 +1,11 @@
 <!-- Modal -->
-<div class="modal fade" id="ModalPYME" [ngClass]="{ 'show': mostrarModal }" tabindex="-1"
-  aria-labelledby="exampleModalLabel2" data-bs-keyboard="false" aria-hidden="true" data-base-backdrop="false">
+<div class="modal fade" id="ModalPYME" tabindex="-1"
+  aria-labelledby="exampleModalLabel2" data-bs-keyboard="false" aria-hidden="true" data-bs-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel2">PYME Student</h1>
-        <button type="button" class="btn-close" (click)="cerrarModal()" data-bs-dismiss="modal"
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
           aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -26,6 +26,10 @@
             <mat-form-field class="custom-form-field">
               <mat-label>Username</mat-label>
               <input matInput formControlName="username" placeholder="CompanyExample" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field class="custom-form-field">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" placeholder="Company Example" required>
             </mat-form-field>
             <mat-form-field class="custom-form-field">
               <mat-label>Telephone</mat-label>

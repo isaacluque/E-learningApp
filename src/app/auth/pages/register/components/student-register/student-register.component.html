@@ -1,17 +1,17 @@
 <!-- Modal -->
-  <div class="modal fade" id="ModalStudent" [ngClass]="{ 'show': mostrarModal }" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-keyboard="false" aria-hidden="true" data-base-backdrop="false">
+  <div class="modal" id="ModalStudent" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-keyboard="false" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Normal Student</h1>
-          <button type="button" class="btn-close" (click)="cerrarModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" #cerrarCrear (click)="cerrarModal()" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form [formGroup]="myForm" (ngSubmit)="postStudentNormal()" autocomplete="off">
             <div class="mb-3">
               <mat-form-field class="custom-form-field">
                 <mat-label>Enter your email</mat-label>
-                <input matInput formControlName="email" placeholder="pat@example.com" required>
+                <input matInput formControlName="email" placeholder="pat@example.com" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top" required>
               </mat-form-field>
               <mat-form-field class="custom-form-field">
                 <mat-label>Password</mat-label>
@@ -26,19 +26,12 @@
                 <input matInput formControlName="username" placeholder="KarlaSmith" required>
               </mat-form-field>
               <mat-form-field class="custom-form-field">
-                <mat-label>First Name</mat-label>
-                <input matInput formControlName="first_name" placeholder="Karla Maritza" required>
-              </mat-form-field>
-              <mat-form-field class="custom-form-field">
-                <mat-label>Last Name</mat-label>
-                <input matInput formControlName="last_name" placeholder="Smith Brown" required>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="Karla Brooke Smith Brown" required>
               </mat-form-field>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cerrarModal()">
-                Cancel
-              </button>
-              <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid" data-bs-dismiss="modal">Register</button>
+              <button type="submit" class="btn btn-primary"  [disabled]="myForm.invalid" >Register</button>
             </div>
           </form>
         </div>
