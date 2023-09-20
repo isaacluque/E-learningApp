@@ -1,23 +1,16 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { RegisterServiceService } from 'src/app/auth/services/register-service.service';
-import * as customValidators from '../../../../shared/validators/validators';
 import Swal from 'sweetalert2';
-import { ValidatorsService } from 'src/app/auth/shared/services/validators-service.service';
-import { Subscription } from 'rxjs';
-import { MatButton } from '@angular/material/button';
+import { RegisterServiceService } from '../../services/register-service.service';
+import { Router } from '@angular/router';
+import { ValidatorsService } from '../../shared/services/validators-service.service';
+import * as customValidators from '../../shared/validators/validators';
 
 @Component({
-  selector: 'app-student-register',
-  templateUrl: './student-register.component.html',
-  styleUrls: ['./student-register.component.css']
+  templateUrl: './register-student.component.html',
+  styleUrls: ['./register-student.component.css']
 })
-export class StudentRegisterComponent{
-
-  @Input() mostrarModal = false;
-  @Output() onCrear: EventEmitter<void> = new EventEmitter();
-  @ViewChild('cerrarCrear') cerrarCrear!: MatButton;
+export class RegisterStudentComponent {
 
   private fb = inject(FormBuilder);
   private registerService = inject(RegisterServiceService);
@@ -36,7 +29,6 @@ export class StudentRegisterComponent{
   });
 
     // Subscripción
-    registroSubs!: Subscription;
 
   postStudentNormal(){
     const {name, email, password, confirm_password, username} = this.myForm.value;
@@ -45,7 +37,6 @@ export class StudentRegisterComponent{
       .subscribe( {
         next: (resp) => {
           if(resp && resp.msg){
-            this.mostrarModal = false;
             Swal.fire({
               title: '¡Éxito!',
               text: resp.msg,

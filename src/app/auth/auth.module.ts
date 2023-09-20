@@ -5,19 +5,17 @@ import { MaterialModule } from '../material/material.module';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { StudentRegisterComponent } from './pages/register/components/student-register/student-register.component';
-import { PymeRegisterComponent } from './pages/register/components/pyme-register/pyme-register.component';
 import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
+import { RegisterStudentComponent } from './pages/register-student/register-student.component';
+import { RegisterPymeComponent } from './pages/register-pyme/register-pyme.component';
 
 
 @NgModule({
   declarations: [
     AuthLayoutComponent,
-    RegisterComponent,
-    StudentRegisterComponent,
-    PymeRegisterComponent,
     LoginAdminComponent,
+    RegisterStudentComponent,
+    RegisterPymeComponent,
   ],
   imports: [
     CommonModule,

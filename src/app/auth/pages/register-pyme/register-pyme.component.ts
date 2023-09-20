@@ -1,26 +1,24 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegisterServiceService } from '../../services/register-service.service';
+import { LocationServiceService } from '../../services/location-service.service';
+import { CompanySizeServiceService } from '../../services/company-size-service.service';
 import { Router } from '@angular/router';
-import { LocationServiceService } from 'src/app/auth/services/location-service.service';
-import { RegisterServiceService } from 'src/app/auth/services/register-service.service';
-import { ValidatorsService } from 'src/app/auth/shared/services/validators-service.service';
-import * as customValidators from '../../../../shared/validators/validators';
-import { CompanySizeElement } from 'src/app/auth/interfaces/company-size.interface';
-import { Location } from '../../../../interfaces/locations.interfaces';
-import { CompanySizeServiceService } from 'src/app/auth/services/company-size-service.service';
+import { ValidatorsService } from '../../shared/services/validators-service.service';
+import * as customValidators from '../../shared/validators/validators';
 import Swal from 'sweetalert2';
+import { CompanySizeElement } from '../../interfaces/company-size.interface';
+import { Location } from '../../interfaces/locations.interfaces';
+
 
 @Component({
-  selector: 'app-pyme-register',
-  templateUrl: './pyme-register.component.html',
-  styleUrls: ['./pyme-register.component.css']
+  templateUrl: './register-pyme.component.html',
+  styleUrls: ['./register-pyme.component.css']
 })
-export class PymeRegisterComponent implements OnInit {
-  @Input() mostrarModal = false;
-
+export class RegisterPymeComponent implements OnInit {
   ngOnInit(): void {
     this.loadLocation(),
-    this.loadCompanySize()
+    this.loadCompanySize();
   }
 
   private fb = inject(FormBuilder);
@@ -42,15 +40,15 @@ export class PymeRegisterComponent implements OnInit {
     name: ['', [Validators.required]]
   }, {
     validators: this.validatorsService.passwordValidator('password', 'confirm_password'),
-  })
+  });
 
   postStudentPYME() {
-    const {name, email, password, confirm_password, username, phone_number, company_name, company_size, location} = this.myForm.value
+    const { name, email, password, confirm_password, username, phone_number, company_name, company_size, location } = this.myForm.value;
 
     this.registerService.registerPYME(name, email, password, confirm_password, username, phone_number, company_name, company_size, location)
       .subscribe({
         next: (resp) => {
-          if(resp && resp.msg){
+          if (resp && resp.msg) {
             Swal.fire({
               title: '¡Éxito!',
               text: resp.msg,
@@ -63,9 +61,9 @@ export class PymeRegisterComponent implements OnInit {
               showConfirmButton: false,
               timer: 4500,
               timerProgressBar: true,
-            })
+            });
 
-            this.router.navigateByUrl('/auth/login')
+            this.router.navigateByUrl('/auth/login');
           }
         },
         error: (error) => {
@@ -81,31 +79,26 @@ export class PymeRegisterComponent implements OnInit {
             showConfirmButton: false,
             timer: 4500,
             timerProgressBar: true,
-          })
+          });
         }
-      })
+      });
   }
 
   listlocation: Location[] = [];
   listcompanySize: CompanySizeElement[] = [];
 
-  loadLocation(){
+  loadLocation() {
 
-    this.locationService.getLocations().subscribe((resp)=>{
+    this.locationService.getLocations().subscribe((resp) => {
 
       this.listlocation = resp.locations!;
     });
   }
 
-  loadCompanySize(){
-    this.companySizeService.getCompanySizes().subscribe((resp)=>{
+  loadCompanySize() {
+    this.companySizeService.getCompanySizes().subscribe((resp) => {
 
       this.listcompanySize = resp.companySize!;
     });
-  }
-
-  cerrarModal() {
-    this.myForm.reset();
-    this.mostrarModal = false;
   }
 }

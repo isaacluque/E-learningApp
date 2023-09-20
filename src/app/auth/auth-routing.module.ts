@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
+import { RegisterStudentComponent } from './pages/register-student/register-student.component';
+import { RegisterPymeComponent } from './pages/register-pyme/register-pyme.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       {path: 'login', component: LoginAdminComponent},
-      {path: 'register', component: RegisterComponent},
+      {path: 'register/register-student', component: RegisterStudentComponent},
+      {path: 'register/register-pyme', component: RegisterPymeComponent},
       {path: '**', redirectTo: 'login'},
     ]
   }

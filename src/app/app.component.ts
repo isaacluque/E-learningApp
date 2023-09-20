@@ -27,10 +27,10 @@ export class AppComponent {
       case AuthStatus.checking:
         return
       case AuthStatus.authenticated:
-        this.router.navigateByUrl('/main/courses')
+        this.router.navigateByUrl('/main')
         return
       case AuthStatus.noAuthenticated:
-        this.router.navigateByUrl('/auth/login-student')
+        this.router.navigateByUrl('/auth/login')
         return
     }
   })

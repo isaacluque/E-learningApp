@@ -13,6 +13,6 @@ export const validateTokenAdminGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
-  router.navigateByUrl('/auth');
+  router.navigateByUrl('/auth/login');
   return false;
 };

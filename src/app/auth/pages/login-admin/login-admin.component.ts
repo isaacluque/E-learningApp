@@ -27,9 +27,9 @@ export class LoginAdminComponent {
 
     this.authService.login(email, password)
       .subscribe( {
-        next: () => this.router.navigateByUrl('/main/courses'),
+        next: () => this.router.navigateByUrl('/main'),
         error: (error) =>{
-          this.router.navigateByUrl('/auth/login-admin');
+          this.router.navigateByUrl('/auth/login');
           Swal.fire({
             title: 'Error',
             text: error,

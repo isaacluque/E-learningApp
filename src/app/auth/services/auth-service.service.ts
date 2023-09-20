@@ -40,7 +40,7 @@ export class AuthServiceService {
 
   login(email: string, password: string): Observable<boolean> {
 
-    const url: string = `${this.baseURL}/auth/login-admin`;
+    const url: string = `${this.baseURL}/auth/login`;
 
     const body = {email, password};
     return this.http.post<AuthResponse>(url, body)
@@ -51,7 +51,7 @@ export class AuthServiceService {
   }
 
   revalidateTokenAdmin(): Observable<boolean> {
-    const url: string = `${this.baseURL}/auth/revalidateAdminToken`;
+    const url: string = `${this.baseURL}/auth/revalidateToken`;
     const token = localStorage.getItem('token');
 
     if(!token) {

@@ -1,14 +1,24 @@
-<!-- Modal -->
-<div class="modal fade" id="ModalPYME" tabindex="-1"
-  aria-labelledby="exampleModalLabel2" data-bs-keyboard="false" aria-hidden="true" data-bs-backdrop="static">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel2">PYME Student</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-          aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+<div class="row flex-center min-vh-100 py-6">
+  <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+    <a class="d-flex flex-center mb-4"
+      ><img
+        class="me-2"
+        src="../../../../assets/img/logo.png"
+        alt=""
+        width="250px"
+      /></a
+    >
+    <div class="container" style="width: 100%;">
+      <div class=" p-4 p-sm-5 bg-white rounded">
+        <div class="row flex-between-center mb-2">
+          <div class="col-auto">
+            <h5>Register</h5>
+          </div>
+          <div class="col-auto fs--1 text-600">
+            <span class="mb-0 undefined">Have an account?</span>
+            <span><a routerLink="/auth/login"> Login</a></span>
+          </div>
+        </div>
         <form [formGroup]="myForm" (ngSubmit)="postStudentPYME()" autocomplete="off">
           <div class="mb-3">
             <mat-form-field class="custom-form-field">
@@ -62,11 +72,8 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-              (click)="cerrarModal()">Cancel</button>
-            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid"
-              data-bs-dismiss="modal">Register</button>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Register</button>
           </div>
         </form>
       </div>

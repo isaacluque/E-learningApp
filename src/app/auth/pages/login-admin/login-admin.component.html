@@ -1,13 +1,7 @@
 <div class="row flex-center min-vh-100 py-6">
   <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-    <a class="d-flex flex-center mb-4"
-      ><img
-        class="me-2"
-        src="../../../../assets/img/logo.png"
-        alt=""
-        width="250px"
-      /></a
-    >
+    <a class="d-flex flex-center mb-4"><img class="me-2" src="../../../../assets/img/logo.png" alt=""
+        width="250px" /></a>
     <div class="card">
       <div class="card-body p-4 p-sm-5">
         <div class="row flex-between-center mb-2">
@@ -16,11 +10,7 @@
           </div>
           <div class="col-auto fs--1 text-600">
             <span class="mb-0 undefined">or </span>
-            <span
-              ><a routerLink="/auth/register"
-                >Create an account</a
-              ></span
-            >
+            <span><a routerLink="/auth/register/register-student">Create an account</a></span>
           </div>
         </div>
         <form [formGroup]="myForm" (ngSubmit)="loginAdmin()" autocomplete="off">
@@ -34,10 +24,11 @@
             <mat-form-field class="custom-form-field">
               <mat-label>Enter your password</mat-label>
               <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide" type="button">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
-              </mat-form-field>
+            </mat-form-field>
           </div>
           <!-- <div class="row flex-between-center">
             <div class="col-auto">
@@ -54,19 +45,18 @@
                 >
               </div>
             </div> -->
-            <!-- </div> -->
-            <div class="mb-3">
-              <button
-              class="btn btn-primary d-block w-100 mt-3"
-              type="submit"
-              name="submit"
-              [disabled]="myForm.invalid"
-              >
+          <!-- </div> -->
+          <div class="mb-3">
+            <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit" [disabled]="myForm.invalid">
               Log in
             </button>
             <div class="row flex-between-center mb-2">
               <div class="col-auto">
                 <a class="fs--1" href="../../../pages/authentication/simple/forgot-password.html">Forgot Password?</a>
+              </div>
+              <div class="col-auto fs--1 text-600">
+                <span class="mb-0 undefined">or </span>
+                <span><a routerLink="/auth/register/register-pyme">Create an account PYME</a></span>
               </div>
             </div>
           </div>
@@ -99,4 +89,3 @@
     </div>
   </div>
 </div>
-
