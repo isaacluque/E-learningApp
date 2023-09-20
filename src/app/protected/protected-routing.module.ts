@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
@@ -8,9 +8,10 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    children:[{
-      path: 'dashboard',
-      component: DashboardComponent
+    children:[
+    {
+        path: 'dashboard',
+        component: DashboardComponent
     },
     {
       path:'administration',

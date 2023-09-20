@@ -1,0 +1,37 @@
+<mat-sidenav-container class="example-container">
+
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
+    <mat-toolbar color="primary">
+      <span>Menu</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <h1>Hello</h1>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <!-- <div class="center-image">
+      <img src="../../../../assets/img/logo.png" alt="" width="7%">
+    </div> -->
+    <span class="spacer"></span>
+    <button
+    mat-button
+    (click)="onLogout()"
+    >
+      Logout
+    </button>
+  </mat-toolbar>
+
+  <div class="container p-2">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+
+
+

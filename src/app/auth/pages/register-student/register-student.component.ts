@@ -50,7 +50,7 @@ export class RegisterStudentComponent {
               timer: 4500,
               timerProgressBar: true,
             })
-            this.prueba();
+            this.redirigir();
           }
         },
         error: (error) => {
@@ -71,13 +71,9 @@ export class RegisterStudentComponent {
       })
   }
 
-  prueba(){
+  redirigir(){
     setTimeout(()=>{
       this.router.navigateByUrl('/auth/login')
-    }, 2500)
-  }
-
-  cerrarModal() {
-    this.myForm.reset();
+    }, 500)
   }
 }

@@ -101,4 +101,11 @@ export class RegisterPymeComponent implements OnInit {
       this.listcompanySize = resp.companySize!;
     });
   }
+
+
+  redirigir(){
+    setTimeout(()=>{
+      this.router.navigateByUrl('/auth/login')
+    }, 500)
+  }
 }
