@@ -17,6 +17,8 @@ export class AuthServiceService {
     this.revalidateTokenAdmin().subscribe()
    }
 
+   nameUser!: string;
+
   private readonly baseURL: string = environment.baseURL;
 
   private http = inject(HttpClient);
@@ -34,7 +36,7 @@ export class AuthServiceService {
     this._authResponseUser.set(User);
     this._authStatus.set(AuthStatus.authenticated);
     localStorage.setItem('token', token);
-
+    this.nameUser = User.NOMBRE_USUARIO;
     return true;
   }
 

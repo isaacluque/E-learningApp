@@ -9,7 +9,10 @@ import { AuthServiceService } from 'src/app/auth/services/auth-service.service';
 export class MainLayoutComponent {
   private authService = inject(AuthServiceService);
 
-
+  public hide = true;
+  get name(): string{
+    return this.authService.nameUser;
+  }
   onLogout(){
     this.authService.logout();
   }

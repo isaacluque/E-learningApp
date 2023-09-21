@@ -6,7 +6,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatRippleModule} from '@angular/material/core';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   exports:[
@@ -17,6 +18,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSidenavModule,
     MatToolbarModule,
     MatSelectModule,
+    MatRippleModule,
+    MatDividerModule,
   ]
 })
 export class MaterialModule { }

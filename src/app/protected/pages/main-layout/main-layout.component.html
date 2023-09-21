@@ -1,5 +1,8 @@
-<mat-sidenav-container class="example-container">
 
+<mat-sidenav-container class="example-container">
+  <div class="container" *ngIf="!hide">
+    <h1>Hello</h1>
+  </div>
   <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
     <mat-toolbar color="primary">
       <span>Menu</span>
@@ -15,23 +18,59 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+    <span class="spacer"></span>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                <a class="nav-link mx-2 pt-0" routerLink="/main/courses" id="logoDashboard">
+
+                    <img src="../../../../assets/img/logo.png" height="45" width="100" alt="">
+
+                </a>
+            </div>
+
     <!-- <div class="center-image">
-      <img src="../../../../assets/img/logo.png" alt="" width="7%">
+      <a href="main/courses">
+        <img class=" mr-2 mx-1" src="../../../../assets/img/logo.png" alt="" >
+      </a>
     </div> -->
     <span class="spacer"></span>
-    <button
+    <div class="d-flex mr-2 mt-2">
+      <app-notification></app-notification>
+    </div>
+    {{name}}
+    <div class="dropdown">
+      <a class="nav-link align-middle" href="#" role="button" data-bs-toggle="dropdown" matRipple
+        [matRippleCentered]="true" [matRippleUnbounded]="true" [matRippleRadius]="30" aria-expanded="false">
+        <!-- active -->
+
+        <img src="../../../../assets/348606242_285566417140868_2598958428520968897_n.jpg" height="50" width="50"
+          class="rounded-circle mr-2 mx-1">
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item">
+          <img src="../../../../assets/348606242_285566417140868_2598958428520968897_n.jpg" alt="" height="55" width="55" class="rounded-circle mr-2 mx-1">
+          <div class="d-flex">
+            <div class="d-flex flex-column">
+              <strong style="font-size:20px;"><b>{{name}}</b></strong>
+              <strong></strong>
+            </div>
+          </div>
+        </a></li>
+        <mat-divider></mat-divider>
+        <li><a class="dropdown-item"><mat-icon>shopping_history</mat-icon><b>Shopping history</b></a></li>
+        <mat-divider></mat-divider>
+        <li><a class="dropdown-item" (click)="onLogout()"><mat-icon>logout</mat-icon><b> Logout</b></a></li>
+      </ul>
+    </div>
+    <!-- <button
     mat-button
     (click)="onLogout()"
     >
       Logout
-    </button>
+    </button> -->
   </mat-toolbar>
 
-  <div class="container p-2">
+    <h1>{{name}}</h1>
+
     <router-outlet></router-outlet>
-  </div>
 
 </mat-sidenav-container>
-
-
-
