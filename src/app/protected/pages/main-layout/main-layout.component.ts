@@ -13,6 +13,9 @@ export class MainLayoutComponent {
   get name(): string{
     return this.authService.nameUser;
   }
+  get email(): string{
+    return this.authService.emailUser;
+  }
   onLogout(){
     this.authService.logout();
   }
