@@ -10,7 +10,18 @@
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>
-    <h1>Hello</h1>
+      <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+          <a class="sidenav-nav-link" [routerLink]="[data.routeLink]">
+            <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
+
+              {{data.icon}}
+
+          </mat-icon>
+          <span class="sidenav-link-text">{{data.label}}</span>
+          </a>
+        </li>
+      </ul>
   </mat-sidenav>
 
   <mat-toolbar color="primary">
@@ -24,16 +35,28 @@
 
       </a>
     </div>
+    <div>
+
+    </div>
+    <div class="container">
+      <form [class.d-none.d-sm-block]="hideForm">
+        <div class="row">
+          <div class="col">
+            <input class="form-control me-2 rounded-pill" type="text" placeholder="Search" aria-label="Search" >
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- <form [class.d-none.d-sm-block]="hideForm">
+      <input class="form-control me-2 rounded-pill" type="text" placeholder="Search" aria-label="Search" >
+    </form> -->
+    <!-- <span class="spacer"></span> -->
     <span class="spacer"></span>
-    <form>
-      <input class="form-control me-2 rounded-pill" type="text" placeholder="Search" aria-label="Search" style="width: 280%;">
-    </form>
-    <span class="spacer"></span>
-    <span class="spacer"></span>
-    <div class="d-flex mr-2 mt-2">
+    <div class="d-flex mr-0 mt-2">
+      <app-shopping-cart></app-shopping-cart>
       <app-notification></app-notification>
     </div>
-    {{name}}
+    <!-- {{name}} -->
 
 
     <div class="dropdown">
@@ -68,81 +91,10 @@
 
   </mat-toolbar>
 
-  <h1>{{name}}</h1>
-
-  <router-outlet></router-outlet>
+  <!-- <h1>{{name}}</h1> -->
+  <div class="mt-2">
+    <router-outlet></router-outlet>
+  </div>
 
 </mat-sidenav-container>
 
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 10%;">
-  < class="container">
-    <div class="justify-content-end align-items-center">
-
-      <a class="nav-link mx-1 pt-0" routerLink="/main/courses" id="logoDashboard">
-
-        <img src="../../../../assets/img/logo.png" height="45" width="100" alt="">
-
-      </a>
-    </div>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
-      aria-controls="offcanvasDarkNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-      aria-labelledby="offcanvasDarkNavbarLabel">
-      <div class="offcanvas-header text-white border-bottom">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-
-          <form class="d-flex mt-3" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-          </form>
-
-
-          <li class="nav-item mx-2">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-
-
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-
-          <div class="dropdown">
-            <a class="nav-link align-middle" href="#" role="button" data-bs-toggle="dropdown" matRipple
-              [matRippleCentered]="true" [matRippleUnbounded]="true" [matRippleRadius]="30" aria-expanded="false">
-
-
-              <img src="../../../../assets/348606242_285566417140868_2598958428520968897_n.jpg" height="50" width="50"
-              class="rounded-circle mr-2 mx-1">
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item">
-                  <img src="../../../../assets/348606242_285566417140868_2598958428520968897_n.jpg" alt="" height="55"
-                    width="55" class="rounded-circle mr-2 mx-1">
-                  <div class="d-flex">
-                    <div class="d-flex flex-column">
-                      <strong style="font-size:20px;"><b>{{name}}</b></strong>
-                      <strong>{{email}}</strong>
-                    </div>
-                  </div>
-                </a></li>
-              <mat-divider></mat-divider>
-              <li><a class="dropdown-item"><mat-icon>shopping_history</mat-icon><b>Shopping history</b></a></li>
-              <li><a class="dropdown-item"><mat-icon>shopping_cart</mat-icon><b>Shopping cart</b></a></li>
-              <mat-divider></mat-divider>
-              <li><a class="dropdown-item"><mat-icon>settings</mat-icon><b>Settings</b></a></li>
-              <li><a class="dropdown-item" (click)="onLogout()"><mat-icon>logout</mat-icon><b> Logout</b></a></li>
-            </ul>
-          </div>
-        </ul>
-      </div>
-    </div>
-</nav>
-<router-outlet></router-outlet>

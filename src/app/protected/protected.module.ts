@@ -8,13 +8,15 @@ import { SecurityModule } from './pages/security/security.module';
 import { MaterialModule } from '../material/material.module';
 import { CourseModule } from './pages/course/course.module';
 import { NotificationComponent } from './pages/notification/notification.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 
 
 @NgModule({
   declarations: [
     MainLayoutComponent,
-    NotificationComponent
+    NotificationComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     CommonModule,
