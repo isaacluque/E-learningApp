@@ -22,6 +22,10 @@ const routes: Routes = [
       loadChildren: () => import('../protected/pages/course/course.module').then(m => m.CourseModule)
     },
     {
+      path:'security',
+      loadChildren: () => import('../protected/pages/security/security.module').then(m => m.SecurityModule)
+    },
+    {
       path:'notification',
       loadChildren: () => import('../protected/pages/notification/notification.module').then(m => m.NotificationModule)
     },

@@ -9,6 +9,7 @@ import { navbarData } from './interfaces/navbar-data.interface';
 })
 export class MainLayoutComponent {
   private authService = inject(AuthServiceService);
+  collapsed = false;
   navData = navbarData;
   hideForm = false;
   @HostListener('window:resize', ['$event'])

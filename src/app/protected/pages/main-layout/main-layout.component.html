@@ -20,6 +20,8 @@
           </mat-icon>
           <span class="sidenav-link-text">{{data.label}}</span>
           </a>
+          <app-sub-level-menu [data]="data"
+          [collapsed]="collapsed"></app-sub-level-menu>
         </li>
       </ul>
   </mat-sidenav>
