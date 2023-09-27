@@ -2,7 +2,7 @@
   <div class="container" *ngIf="!hide">
     <h1>Hello</h1>
   </div>
-  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
     <mat-toolbar color="primary">
       <span>Menu</span>
       <span class="spacer"></span>
@@ -10,93 +10,176 @@
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>
-      <ul class="sidenav-nav">
-        <li class="sidenav-nav-item" *ngFor="let data of navData">
-          <a class="sidenav-nav-link" [routerLink]="[data.routeLink]">
-            <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
-
-              {{data.icon}}
-
+    <!-- <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of navData">
+        <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
+            {{ data.icon }}
           </mat-icon>
-          <span class="sidenav-link-text">{{data.label}}</span>
-          </a>
-          <app-sub-level-menu [data]="data"
-          [collapsed]="collapsed"></app-sub-level-menu>
-        </li>
-      </ul>
+          <span class="sidenav-link-text" @fadeInOut>{{ data.label }}</span>
+        </a>
+      </li>
+    </ul> -->
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of navData">
+        <a class="sidenav-nav-link" (click)="handleClick(data)" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *ngIf="data.items && data.items.length > 0">
+          <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
+            {{ data.icon }}
+          </mat-icon>
+          <span class="sidenav-link-text" @fadeInOut>{{ data.label }}</span>
+          <mat-icon
+            class="material-icons-outlined menu-collapse-icon"
+            mat-list-icon
+            id="icon"
+            *ngIf="data.items"
+            [ngClass]="!data.expanded ? 'hidden' : ''"
+          >
+            <!-- si la data no está expandida ocultará este ícono -->
+            expand_more
+          </mat-icon>
+          <mat-icon
+            class="material-icons-outlined menu-collapse-icon"
+            mat-list-icon
+            id="icon"
+            *ngIf="data.items"
+            [ngClass]="!data.expanded ? '' : 'hidden'"
+          >
+            <!-- si la data no está expandida mostrará este otro ícono-->
+            chevron_right
+          </mat-icon>
+        </a>
+        <a
+          class="sidenav-nav-link"
+          *ngIf="!data.items || (data.items && data.items.length === 0)"
+          [routerLink]="[data.routeLink]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
+            {{ data.icon }}
+          </mat-icon>
+          <span class="sidenav-link-text" @fadeInOut>{{ data.label }}</span>
+        </a>
+        <div *ngIf="data.items && data.items.length > 0">
+          <app-sub-level-menu
+          [data]="data"
+          [multiple]="multiple"
+          [expanded]="data.expanded"
+          ></app-sub-level-menu>
+        </div>
+      </li>
+    </ul>
   </mat-sidenav>
 
   <mat-toolbar color="primary">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
-      <a class="nav-link mx-2 pt-0" routerLink="/main/courses" id="logoDashboard">
-
-        <img src="../../../../assets/img/logo.png" height="45" width="100" alt="">
-
+    <div
+      class="d-flex justify-content-center align-items-center"
+      style="height: 100%"
+    >
+      <a
+        class="nav-link mx-2 pt-0"
+        routerLink="/main/courses"
+        id="logoDashboard"
+      >
+        <img
+          src="../../../../assets/img/logo.png"
+          height="45"
+          width="100"
+          alt=""
+        />
       </a>
     </div>
-    <div>
-
-    </div>
+    <div></div>
     <div class="container">
       <form [class.d-none.d-sm-block]="hideForm">
         <div class="row">
           <div class="col">
-            <input class="form-control me-2 rounded-pill" type="text" placeholder="Search" aria-label="Search" >
+            <input
+              class="form-control me-2 rounded-pill"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
           </div>
         </div>
       </form>
     </div>
-    <!-- <form [class.d-none.d-sm-block]="hideForm">
-      <input class="form-control me-2 rounded-pill" type="text" placeholder="Search" aria-label="Search" >
-    </form> -->
-    <!-- <span class="spacer"></span> -->
     <span class="spacer"></span>
     <div class="d-flex mr-0 mt-2">
       <app-shopping-cart></app-shopping-cart>
       <app-notification></app-notification>
     </div>
-    <!-- {{name}} -->
-
 
     <div class="dropdown">
-      <a class="nav-link align-middle" href="#" role="button" data-bs-toggle="dropdown" matRipple
-        [matRippleCentered]="true" [matRippleUnbounded]="true" [matRippleRadius]="30" aria-expanded="false">
-
-
-        <img src="../../../../assets/348606242_285566417140868_2598958428520968897_n.jpg" height="50" width="50"
-        class="rounded-circle mr-2 mx-1">
+      <a
+        class="nav-link align-middle"
+        href="#"
+        role="button"
+        data-bs-toggle="dropdown"
+        matRipple
+        [matRippleCentered]="true"
+        [matRippleUnbounded]="true"
+        [matRippleRadius]="30"
+        aria-expanded="false"
+      >
+        <img
+          src="../../../../assets/348606242_285566417140868_2598958428520968897_n.jpg"
+          height="50"
+          width="50"
+          class="rounded-circle mr-2 mx-1"
+        />
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item">
-            <img src="../../../../assets/348606242_285566417140868_2598958428520968897_n.jpg" alt="" height="55"
-              width="55" class="rounded-circle mr-2 mx-1">
+        <li>
+          <a class="dropdown-item">
+            <img
+              src="../../../../assets/348606242_285566417140868_2598958428520968897_n.jpg"
+              alt=""
+              height="55"
+              width="55"
+              class="rounded-circle mr-2 mx-1"
+            />
             <div class="d-flex">
               <div class="d-flex flex-column">
-                <strong style="font-size:20px;"><b>{{name}}</b></strong>
-                <strong>{{email}}</strong>
+                <strong style="font-size: 20px"
+                  ><b>{{ name }}</b></strong
+                >
+                <strong>{{ email }}</strong>
               </div>
             </div>
-          </a></li>
+          </a>
+        </li>
         <mat-divider></mat-divider>
-        <li><a class="dropdown-item"><mat-icon>shopping_history</mat-icon><b>Shopping history</b></a></li>
-        <li><a class="dropdown-item"><mat-icon>shopping_cart</mat-icon><b>Shopping cart</b></a></li>
+        <li>
+          <a class="dropdown-item"
+            ><mat-icon>shopping_history</mat-icon><b>Shopping history</b></a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item"
+            ><mat-icon>shopping_cart</mat-icon><b>Shopping cart</b></a
+          >
+        </li>
         <mat-divider></mat-divider>
-        <li><a class="dropdown-item"><mat-icon>settings</mat-icon><b>Settings</b></a></li>
-        <li><a class="dropdown-item" (click)="onLogout()"><mat-icon>logout</mat-icon><b> Logout</b></a></li>
+        <li>
+          <a class="dropdown-item"
+            ><mat-icon>settings</mat-icon><b>Settings</b></a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" (click)="onLogout()"
+            ><mat-icon>logout</mat-icon><b> Logout</b></a
+          >
+        </li>
       </ul>
     </div>
-
-
-
   </mat-toolbar>
 
   <!-- <h1>{{name}}</h1> -->
-  <div class="mt-2">
+  <div class="mt-2 ml-2">
     <router-outlet></router-outlet>
   </div>
-
 </mat-sidenav-container>
-

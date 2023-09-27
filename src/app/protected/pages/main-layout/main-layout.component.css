@@ -42,9 +42,66 @@
       display: flex;
       align-items: center;
       height: 3rem;
+      width: 14rem;
       color: #ffffff;
       border-radius: 0.625rem;
+      border-color:black;
       text-decoration: none;
+      transition: all .3s ease;
+
+      .material-icons-outlined {
+        font-size: 22px;
+        width: 3rem;
+        min-width: 2rem;
+        margin: 0 0.5rem;
+        text-align: start;
+      }
+
+      .sidenav-link-text{
+        margin-left: 0;
+      }
+    }
+    .sidenav-nav-link:hover {
+      background-color: #39489d;
+      color: #fff;
+
+      .menu-collapse-icon {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.active {
+  background-color: #39489d;
+  .menu-collapse-icon
+  .sidenav-link-icon,
+  .sidenav-link-text {
+    color: #fff;
+  }
+}
+
+/* .menu-collapse-icon{
+  font-size: 25px;
+  width: 0;
+  min-width: 0;
+  margin: auto 0.5rem auto auto;
+  text-align: center;
+  color: #f3f3f3;
+} */
+
+.sublevel-nav {
+  list-style: none;
+  margin-left: 10px;
+
+  .sublevel-nav-item {
+    .sublevel-nav-link {
+      display: flex;
+      align-items: center;
+      height: 3rem;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 0.625rem;
       transition: all .3s ease;
 
       .material-icons-outlined {
@@ -55,13 +112,11 @@
         text-align: center;
       }
 
-      .sidenav-link-text{
-        margin-left: 1.5rem;
+      .sublevel-link-text {
+        margin-left: 0.8rem;
       }
     }
-  }
-  .sidenav-nav-item:hover {
-    .sidenav-nav-link {
+    .sublevel-nav-link:hover {
       background-color: #39489d;
       color: #fff;
     }

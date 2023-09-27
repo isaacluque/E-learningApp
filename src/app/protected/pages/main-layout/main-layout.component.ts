@@ -1,16 +1,34 @@
 import { Component, HostListener, inject } from '@angular/core';
 import { AuthServiceService } from 'src/app/auth/services/auth-service.service';
 import { navbarData } from './interfaces/navbar-data.interface';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { INavbarData } from './interfaces/helper';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.css']
+  styleUrls: ['./main-layout.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('350ms',
+          style({opacity: 1})
+        )
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('350ms',
+          style({opacity: 0})
+        )
+      ])
+    ])
+  ]
 })
 export class MainLayoutComponent {
   private authService = inject(AuthServiceService);
-  collapsed = false;
   navData = navbarData;
+  multiple: boolean = false;
   hideForm = false;
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -28,4 +46,16 @@ export class MainLayoutComponent {
   onLogout(){
     this.authService.logout();
   }
+
+  handleClick(item: INavbarData): void {
+    if(!this.multiple) {
+      for(let modelItem of this.navData) {
+        if(item !== modelItem && modelItem.expanded){
+          modelItem.expanded = false;
+        }
+      }
+    }
+    item.expanded = !item.expanded;
+  }
+
 }

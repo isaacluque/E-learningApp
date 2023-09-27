@@ -7,7 +7,7 @@ export const navbarData: INavbarData[] = [
     label: 'Dashboard'
   },
   {
-    routeLink: 'courses',
+    routeLink: '',
     icon: 'school',
     label: 'Courses'
   },
@@ -18,7 +18,8 @@ export const navbarData: INavbarData[] = [
     items: [
       {
         routeLink: 'security/users',
-        label: 'Users'
+        label: 'Users',
+        icon: 'person_outline'
       }
     ]
   }
