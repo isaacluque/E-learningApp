@@ -6,6 +6,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { EditUserComponent } from './pages/users/components/edit-user/edit-user.component';
 import { DeleteUserComponent } from './pages/users/components/delete-user/delete-user.component';
 import { CreateUserComponent } from './pages/users/components/create-user/create-user.component';
+import { MaterialModule } from 'src/app/material/material.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CreateUserComponent } from './pages/users/components/create-user/create
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     SecurityRoutingModule
   ]
 })

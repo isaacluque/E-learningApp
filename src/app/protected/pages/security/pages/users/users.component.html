@@ -1,1 +1,72 @@
-<p>users works!</p>
+<div class="container-fluid">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th colspan="8"><form >
+            <input
+                  class="form-control rounded-pill"
+                  type="text"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+          </form></th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Nombre</th>
+          <th>Estado</th>
+          <th>Rol</th>
+          <th>Última Conexión</th>
+          <th>Correo Electronico</th>
+          <th>Imagen</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="text-break" data-title="Usuario">{{user.USUARIO}}</td>
+              <td class="text-break" data-title="Nombre">{{user.NOMBRE_USUARIO}}</td>
+              <td class="text-break" data-title="Estado">{{user.ESTADO}}</td>
+              <td class="text-break" data-title="Rol">{{user.ROL}}</td>
+              <td class="text-break" data-title="Última Conexión">{{user.ULTIMA_CONEXION}}</td>
+              <td class="text-break" data-title="Correo Electronico">{{user.CORREO_ELECTRONICO}}</td>
+              <td class="text-break" data-title="Imagen">{{user.IMAGEN}}</td>
+              <td class="text-break" data-title="Acción">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" class="custom-menu" >
+                  <ng-container>
+                    <button mat-menu-item>
+                      <mat-icon id="custom-mat-icon">text_snippet</mat-icon>
+                      <span class="custom-text">See more</span>
+                    </button>
+                  </ng-container>
+                  <ng-container >
+                    <button mat-menu-item>
+                      <mat-icon id="custom-mat-icon">edit</mat-icon>
+                      <span class="custom-text">Edit</span>
+                    </button>
+                  </ng-container>
+                  <ng-container>
+                    <button mat-menu-item>
+                      <mat-icon id="custom-mat-icon">block</mat-icon>
+                      <span class="custom-text">Block</span>
+                    </button>
+                  </ng-container>
+                  <ng-container>
+                    <button mat-menu-item>
+                      <mat-icon id="custom-mat-icon">lock_open</mat-icon>
+                      <span class="custom-text">To unlock</span>
+                    </button>
+                  </ng-container>
+                </mat-menu>
+              </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+

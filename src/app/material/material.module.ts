@@ -8,6 +8,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRippleModule} from '@angular/material/core';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   exports:[
@@ -20,6 +22,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSelectModule,
     MatRippleModule,
     MatDividerModule,
+    MatPaginatorModule,
+    MatMenuModule,
   ]
 })
 export class MaterialModule { }
