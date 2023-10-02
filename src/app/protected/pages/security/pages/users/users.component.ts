@@ -13,6 +13,7 @@ import { ViewUser } from './interfaces/view-users.interface';
 export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
+    this.getImagenes();
   }
 
   hide = false;
@@ -23,11 +24,18 @@ export class UsersComponent implements OnInit {
   private validatorsService = inject(ValidatorsService);
 
   public users: ViewUser[] = [];
+  public imagen: ViewUser[] = [];
 
 
   getUsers() {
     this.userservice.getUsers().subscribe( viewuser => {
       this.users = viewuser;
     });
+  }
+
+  getImagenes() {
+    this.userservice.getImagenes().subscribe(viewuser => {
+      this.imagen = viewuser;
+    })
   }
 }

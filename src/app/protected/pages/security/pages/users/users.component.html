@@ -25,14 +25,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users; let u of imagen">
           <td class="text-break" data-title="Usuario">{{user.USUARIO}}</td>
               <td class="text-break" data-title="Nombre">{{user.NOMBRE_USUARIO}}</td>
               <td class="text-break" data-title="Estado">{{user.ESTADO}}</td>
               <td class="text-break" data-title="Rol">{{user.ROL}}</td>
               <td class="text-break" data-title="Última Conexión">{{user.ULTIMA_CONEXION}}</td>
               <td class="text-break" data-title="Correo Electronico">{{user.CORREO_ELECTRONICO}}</td>
-              <td class="text-break" data-title="Imagen">{{user.IMAGEN}}</td>
+              <td class="text-break" data-title="Imagen"><img [src]="'http//localhost:9001/'+ u.IMAGEN" alt=""></td>
               <td class="text-break" data-title="Acción">
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                   <mat-icon>more_vert</mat-icon>

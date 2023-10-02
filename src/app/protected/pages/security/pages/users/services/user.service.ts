@@ -30,4 +30,17 @@ export class UserService {
       )
 
   }
+
+  getImagenes(): Observable<ViewUser[]> {
+    const url: string = `${this.baseURL}/user/imagen/user`;
+
+    return this.http.get<RespViewUser>(url)
+      .pipe(
+        map(resp => resp.ViewUser),
+        tap(console.log),
+        catchError(err => throwError(() => (err.error.msg)))
+      )
+  }
 }
+
+
