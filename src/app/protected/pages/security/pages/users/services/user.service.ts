@@ -3,6 +3,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { environment } from 'src/app/environments/environments';
 import { RespViewUser, ViewUser } from '../interfaces/view-users.interface';
 import { Observable, catchError, map, tap, throwError } from 'rxjs';
+import { UserResponse } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,15 @@ export class UserService {
         catchError(err => throwError(() => (err.error.msg)))
       )
 
+  }
+
+  putBlockUser(id_user:number, ){
+    const url: string = `${this.baseURL}/user/blocked/${id_user}`
+
+    return this.http.put<UserResponse>(url, {})
+      .pipe(
+        catchError(err => throwError(() => (err.error.msg)))
+      )
   }
 
   getImagenes(): Observable<ViewUser[]> {

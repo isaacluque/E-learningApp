@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/auth/shared/services/validators-service.service';
 import { UserService } from './services/user.service';
 import { ViewUser } from './interfaces/view-users.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users',
@@ -13,10 +14,16 @@ import { ViewUser } from './interfaces/view-users.interface';
 export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
-    this.getImagenes();
+
   }
 
-  hide = false;
+ID_USUARIO:         number = 0;
+USUARIO:            string = "";
+NOMBRE_USUARIO:     string = "";
+ESTADO:             string = "";
+ID_ROL:             number = 0;
+ROL:                string = "";
+CORREO_ELECTRONICO: string = "";
 
   private fb = inject(FormBuilder);
   private userservice = inject(UserService);
@@ -24,8 +31,6 @@ export class UsersComponent implements OnInit {
   private validatorsService = inject(ValidatorsService);
 
   public users: ViewUser[] = [];
-  public imagen: ViewUser[] = [];
-
 
   getUsers() {
     this.userservice.getUsers().subscribe( viewuser => {
@@ -33,9 +38,51 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  getImagenes() {
-    this.userservice.getImagenes().subscribe(viewuser => {
-      this.imagen = viewuser;
-    })
+  selection(id_user: number, user: string, username: string, status: string, id_role: number, role: string, email: string) {
+    this.ID_USUARIO = id_user;
+    this.USUARIO = user;
+    this.NOMBRE_USUARIO = username;
+    this.ESTADO = status;
+    this.ID_ROL = id_role;
+    this.ROL = role;
+    this.CORREO_ELECTRONICO = email;
   }
+
+  putBlockUser() {
+    this.userservice.putBlockUser(this.ID_USUARIO)
+      .subscribe( resp => {
+        if(resp.ok === true) {
+          Swal.fire({
+            title: '¡Éxito!',
+            text: resp.msg,
+            icon: 'success',
+            iconColor: 'white',
+            background: '#a5dc86',
+            color: 'white',
+            toast: true,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 4500,
+            timerProgressBar: true,
+          })
+        } else {
+          Swal.fire({
+            title: 'Error',
+            text: resp.msg,
+            icon: 'error',
+            iconColor: 'white',
+            background: '#d12609',
+            color: 'white',
+            toast: true,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 4500,
+            timerProgressBar: true,
+          })
+        }
+      }
+
+    )
+  }
+
 }
