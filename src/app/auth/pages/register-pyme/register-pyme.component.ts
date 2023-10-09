@@ -13,7 +13,7 @@ import { Location } from '../../interfaces/locations.interfaces';
 
 @Component({
   templateUrl: './register-pyme.component.html',
-  styleUrls: ['./register-pyme.component.css']
+  styleUrls: ['../../../../styles.css']
 })
 export class RegisterPymeComponent implements OnInit {
   ngOnInit(): void {

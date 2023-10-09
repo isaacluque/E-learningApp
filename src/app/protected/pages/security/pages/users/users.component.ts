@@ -13,7 +13,6 @@ import { ViewUser } from './interfaces/view-users.interface';
 export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
-    this.getImagenes();
   }
 
   hide = false;

@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './login-admin.component.html',
-  styleUrls: ['./login-admin.component.css']
+  styleUrls: ['../../../../styles.css']
 })
 export class LoginAdminComponent {
   private fb = inject(FormBuilder);

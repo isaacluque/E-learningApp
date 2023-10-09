@@ -32,7 +32,7 @@
               <td class="text-break" data-title="Rol">{{user.ROL}}</td>
               <td class="text-break" data-title="Última Conexión">{{user.ULTIMA_CONEXION}}</td>
               <td class="text-break" data-title="Correo Electronico">{{user.CORREO_ELECTRONICO}}</td>
-              <td class="text-break" data-title="Imagen"><img [src]="'http//localhost:9001/'+ u.IMAGEN" alt=""></td>
+              <td class="text-break" data-title="Imagen"></td>
               <td class="text-break" data-title="Acción">
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                   <mat-icon>more_vert</mat-icon>
@@ -51,7 +51,7 @@
                     </button>
                   </ng-container>
                   <ng-container>
-                    <button mat-menu-item>
+                    <button mat-menu-item data-bs-toggle="modal" data-bs-target="#exampleModal">
                       <mat-icon id="custom-mat-icon">block</mat-icon>
                       <span class="custom-text">Block</span>
                     </button>
@@ -67,6 +67,7 @@
         </tr>
       </tbody>
     </table>
+    <app-delete-user></app-delete-user>
 </div>
 
 

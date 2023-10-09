@@ -7,7 +7,7 @@ import { INavbarData } from './interfaces/helper';
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.css'],
+  styleUrls: ['../../../../styles.css'],
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [

@@ -1,8 +1,5 @@
-.custom-form-field {
-  width: 100%;
-   /* Agrega aquí tus reglas CSS personalizadas para extender el tamaño del form field */
-}
 
-::ng-deep .cdk-overlay-container {
+
+/* ::ng-deep .cdk-overlay-container {
   z-index: 999999 !important;
-}
+} */

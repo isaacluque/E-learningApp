@@ -8,7 +8,7 @@ import * as customValidators from '../../shared/validators/validators';
 
 @Component({
   templateUrl: './register-student.component.html',
-  styleUrls: ['./register-student.component.css']
+  styleUrls: ['../../../../styles.css']
 })
 export class RegisterStudentComponent {
 
