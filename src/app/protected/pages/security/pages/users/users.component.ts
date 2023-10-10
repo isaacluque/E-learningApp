@@ -14,10 +14,16 @@ import Swal from 'sweetalert2';
 export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
-    this.getImagenes();
+
   }
 
-  hide = false;
+ID_USUARIO:         number = 0;
+USUARIO:            string = "";
+NOMBRE_USUARIO:     string = "";
+ESTADO:             string = "";
+ID_ROL:             number = 0;
+ROL:                string = "";
+CORREO_ELECTRONICO: string = "";
 
   private fb = inject(FormBuilder);
   private userservice = inject(UserService);
