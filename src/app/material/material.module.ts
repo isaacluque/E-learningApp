@@ -10,6 +10,8 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   exports:[
@@ -24,6 +26,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDividerModule,
     MatPaginatorModule,
     MatMenuModule,
+    MatCheckboxModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

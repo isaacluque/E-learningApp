@@ -25,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users; let u of imagen">
+        <tr *ngFor="let user of users">
           <td class="text-break" data-title="Usuario">{{user.USUARIO}}</td>
               <td class="text-break" data-title="Nombre">{{user.NOMBRE_USUARIO}}</td>
               <td class="text-break" data-title="Estado">{{user.ESTADO}}</td>
@@ -34,7 +34,8 @@
               <td class="text-break" data-title="Correo Electronico">{{user.CORREO_ELECTRONICO}}</td>
               <td class="text-break" data-title="Imagen"></td>
               <td class="text-break" data-title="Acción">
-                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+                  (click)="selection(user.ID_USUARIO, user.USUARIO, user.NOMBRE_USUARIO, user.ESTADO, user.ID_ROL, user.ROL, user.CORREO_ELECTRONICO)">
                   <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu" class="custom-menu" >
@@ -51,11 +52,12 @@
                     </button>
                   </ng-container>
                   <ng-container>
-                    <button mat-menu-item data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button mat-menu-item data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
                       <mat-icon id="custom-mat-icon">block</mat-icon>
                       <span class="custom-text">Block</span>
                     </button>
                   </ng-container>
+
                   <ng-container>
                     <button mat-menu-item>
                       <mat-icon id="custom-mat-icon">lock_open</mat-icon>
@@ -67,7 +69,9 @@
         </tr>
       </tbody>
     </table>
+
     <app-delete-user></app-delete-user>
 </div>
+
 
 
