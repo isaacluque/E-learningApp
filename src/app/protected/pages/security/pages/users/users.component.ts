@@ -1,20 +1,29 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/auth/shared/services/validators-service.service';
 import { UserService } from './services/user.service';
 import { ViewUser } from './interfaces/view-users.interface';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteUserComponent } from './components/delete-user/delete-user.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getUsers();
+  }
 
+  constructor (public dialog: MatDialog){}
+  ngOnDestroy(): void {
+    if( this.subscripcion ){
+      this.subscripcion.unsubscribe();
+    }
   }
 
 ID_USUARIO:         number = 0;
@@ -30,10 +39,12 @@ CORREO_ELECTRONICO: string = "";
   private router = inject(Router);
   private validatorsService = inject(ValidatorsService);
 
+  subscripcion!: Subscription;
+
   public users: ViewUser[] = [];
 
   getUsers() {
-    this.userservice.getUsers().subscribe( viewuser => {
+    this.subscripcion = this.userservice.getUsers().subscribe( viewuser => {
       this.users = viewuser;
     });
   }
@@ -46,6 +57,14 @@ CORREO_ELECTRONICO: string = "";
     this.ID_ROL = id_role;
     this.ROL = role;
     this.CORREO_ELECTRONICO = email;
+  }
+
+  openDialog(user: any ) {
+    this.dialog.open(DeleteUserComponent, {
+      width: '500px',
+      height: '350px',
+      data: user,
+    });
   }
 
   putBlockUser() {

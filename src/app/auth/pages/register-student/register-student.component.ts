@@ -1,22 +1,29 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { RegisterServiceService } from '../../services/register-service.service';
 import { Router } from '@angular/router';
 import { ValidatorsService } from '../../shared/services/validators-service.service';
 import * as customValidators from '../../shared/validators/validators';
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './register-student.component.html',
   styleUrls: ['../../../../styles.css']
 })
-export class RegisterStudentComponent {
+export class RegisterStudentComponent implements OnDestroy {
+  ngOnDestroy(): void {
+    if( this.registerStudentSub ){
+      this.registerStudentSub.unsubscribe();
+    }
+  }
 
   private fb = inject(FormBuilder);
   private registerService = inject(RegisterServiceService);
   private router = inject(Router);
   private validatorsService = inject(ValidatorsService);
 
+  registerStudentSub!: Subscription;
 
   public myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(customValidators.emailPattern)]],
@@ -33,7 +40,7 @@ export class RegisterStudentComponent {
   postStudentNormal(){
     const {name, email, password, confirm_password, username} = this.myForm.value;
 
-    this.registerService.registerStudentNormal(name, email, password, confirm_password, username)
+    this.registerStudentSub = this.registerService.registerStudentNormal(name, email, password, confirm_password, username)
       .subscribe( {
         next: (resp) => {
           if(resp && resp.msg){

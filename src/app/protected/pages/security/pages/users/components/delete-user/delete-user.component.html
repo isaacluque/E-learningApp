@@ -1,1 +1,13 @@
-<p>delete-user works!</p>
+<mat-dialog-content class="mat-typography">
+  <div class="text-center">
+    <img src="../../../../../../../../assets/warnig.png" alt="" height="220px" width="220px">
+  </div>
+
+  <div class="text-center mt-2">
+    <strong>Are you sure I want to block the user {{data.USUARIO}}?</strong>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true" (click)="putBlockUser()" cdkFocusInitial>Accept</button>
+</mat-dialog-actions>

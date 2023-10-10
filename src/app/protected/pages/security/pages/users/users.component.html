@@ -52,12 +52,17 @@
                     </button>
                   </ng-container>
                   <ng-container>
-                    <button mat-menu-item data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+                    <button mat-menu-item data-bs-toggle="modal" data-bs-target="#exampleModal">
                       <mat-icon id="custom-mat-icon">block</mat-icon>
                       <span class="custom-text">Block</span>
                     </button>
                   </ng-container>
-
+                  <!-- <ng-container>
+                    <button mat-menu-item (click)="openDialog(user)" (Desactivar)="getUsers()">
+                      <mat-icon id="custom-mat-icon">block</mat-icon>
+                      <span class="custom-text">Block</span>
+                    </button>
+                  </ng-container> -->
                   <ng-container>
                     <button mat-menu-item>
                       <mat-icon id="custom-mat-icon">lock_open</mat-icon>
@@ -69,9 +74,9 @@
         </tr>
       </tbody>
     </table>
-
-    <app-delete-user></app-delete-user>
 </div>
+
+
 
 
 
