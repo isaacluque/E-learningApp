@@ -9,6 +9,7 @@ import { CourseModule } from './pages/course/course.module';
 import { NotificationComponent } from './pages/notification/notification.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { SubLevelMenuComponent } from './pages/main-layout/components/sub-level-menu/sub-level-menu.component';
+import { ToolbarComponent } from './pages/main-layout/components/toolbar/toolbar.component';
 
 
 
@@ -18,6 +19,7 @@ import { SubLevelMenuComponent } from './pages/main-layout/components/sub-level-
     NotificationComponent,
     ShoppingCartComponent,
     SubLevelMenuComponent,
+    ToolbarComponent,
   ],
   imports: [
     CommonModule,

@@ -47,6 +47,8 @@ export class MainLayoutComponent {
     this.authService.logout();
   }
 
+  panelOpenState = false;
+
   handleClick(item: INavbarData): void {
     if(!this.multiple) {
       for(let modelItem of this.navData) {
