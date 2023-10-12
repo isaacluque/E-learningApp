@@ -1,3 +1,10 @@
+<app-sidenav></app-sidenav>
+<div class="backgrond">
+
+  <router-outlet class="calcular"></router-outlet>
+</div>
+
+<app-footer></app-footer>
 <!-- <mat-toolbar color="primary">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -105,64 +112,7 @@
     </div>
 
   </mat-toolbar> -->
-  <app-toolbar></app-toolbar>
-  <div class="offcanvas offcanvas-start min-vh-100" #sidenav data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-  aria-labelledby="offcanvasWithBothOptionsLabel">
-    <div class="offcanvas-header">
 
-    </div>
-
-    <div class="offcanvas-body">
-        <li class="sidenav-nav-item" *ngFor="let data of navData">
-          <a class="sidenav-nav-link" (click)="handleClick(data)" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *ngIf="data.items && data.items.length > 0">
-            <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
-              {{ data.icon }}
-            </mat-icon>
-            <span class="sidenav-link-text" @fadeInOut>{{ data.label }}</span>
-            <mat-icon
-              class="material-icons-outlined menu-collapse-icon"
-              mat-list-icon
-              id="icon"
-              *ngIf="data.items"
-              [ngClass]="!data.expanded ? 'hidden' : ''"
-            >
-
-              expand_more
-            </mat-icon>
-            <mat-icon
-              class="material-icons-outlined menu-collapse-icon"
-              mat-list-icon
-              id="icon"
-              *ngIf="data.items"
-              [ngClass]="!data.expanded ? '' : 'hidden'"
-            >
-
-              chevron_right
-            </mat-icon>
-          </a>
-          <a
-            class="sidenav-nav-link"
-            *ngIf="!data.items || (data.items && data.items.length === 0)"
-            [routerLink]="[data.routeLink]"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
-              {{ data.icon }}
-            </mat-icon>
-            <span class="sidenav-link-text" @fadeInOut>{{ data.label }}</span>
-          </a>
-          <div *ngIf="data.items && data.items.length > 0">
-            <app-sub-level-menu
-            [data]="data"
-            [multiple]="multiple"
-            [expanded]="data.expanded"
-            ></app-sub-level-menu>
-          </div>
-        </li>
-
-    </div>
-  </div>
 
 <!-- <mat-sidenav-container class="example-container">
   <div class="container" *ngIf="!hide">

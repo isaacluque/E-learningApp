@@ -1,0 +1,62 @@
+<app-toolbar></app-toolbar>
+  <div class="offcanvas offcanvas-start min-vh-100" #sidenav data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+  aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+
+    </div>
+
+    <div class="offcanvas-body">
+        <mat-nav-list *ngFor="let data of navData">
+          <a (click)="handleClick(data)" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *ngIf="data.items && data.items.length > 0">
+            <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
+              {{ data.icon }}
+            </mat-icon>
+            <div class="d-flex justify-content-between align-items-center" style="width: 100%;">
+              <span id="item" @fadeInOut>{{ data.label }}</span>
+              <mat-icon
+                class="material-icons-outlined menu-collapse-icon"
+                mat-list-icon
+                id="icon"
+                *ngIf="data.items"
+                [ngClass]="!data.expanded ? 'hidden' : ''"
+              >
+
+                expand_more
+              </mat-icon>
+
+              <mat-icon
+                class="material-icons-outlined menu-collapse-icon"
+                mat-list-icon
+                id="icon"
+                *ngIf="data.items"
+                [ngClass]="!data.expanded ? '' : 'hidden'"
+              >
+
+                chevron_right
+              </mat-icon>
+
+            </div>
+          </a>
+          <a routerLink="{{data.routeLink}}"
+            *ngIf="!data.items || (data.items && data.items.length === 0)"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <mat-icon class="material-icons-outlined" mat-list-icon id="icon">
+              {{ data.icon }}
+            </mat-icon>
+            <span id="item" @fadeInOut>{{ data.label }}</span>
+          </a>
+          <div *ngIf="data.items && data.items.length > 0">
+            <app-sub-level-menu
+            [data]="data"
+            [multiple]="multiple"
+            [expanded]="data.expanded"
+            ></app-sub-level-menu>
+          </div>
+        </mat-nav-list>
+
+    </div>
+  </div>

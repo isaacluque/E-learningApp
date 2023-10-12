@@ -10,3 +10,40 @@ table {
   background-color: rgb(47, 61, 216);
 }
 
+.full-height {
+  height: 80vh; /* Establece la altura del div al 100% del alto de la ventana */
+  display: flex; /* Utiliza flexbox para alinear los elementos */
+  justify-content: center; /* Centra horizontalmente los elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.contenido {
+  width: fit-content;
+}
+
+.form-control {
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+  padding: 15px;
+  font-weight: normal;
+  font-family: 'Lobster Two', cursive;
+  font-size: 45px;
+  margin-bottom: 0%;
+}
+
+::ng-deep .mat-mdc-paginator-outer-container{
+  font-weight: bold;
+  margin-top: 2px;
+  margin-bottom: 20px;
+  background: rgb(255, 255, 255);
+  color: #000000;
+}
+
+::ng-dep .mat-mdc-form-field-infix{
+  color: #ffffff;
+}
+
+

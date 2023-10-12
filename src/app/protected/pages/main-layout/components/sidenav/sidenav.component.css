@@ -1,12 +1,3 @@
-.backgrond {
-  width: 100%;
-  min-height:calc(100% - 75px);
-}
-
-.calcular {
-  height: calc(100vh - 65px);
-}
-
 .spacer {
   flex-grow: 20;
 }

@@ -10,6 +10,8 @@ import { NotificationComponent } from './pages/notification/notification.compone
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { SubLevelMenuComponent } from './pages/main-layout/components/sub-level-menu/sub-level-menu.component';
 import { ToolbarComponent } from './pages/main-layout/components/toolbar/toolbar.component';
+import { SidenavComponent } from './pages/main-layout/components/sidenav/sidenav.component';
+import { FooterComponent } from './pages/main-layout/components/footer/footer.component';
 
 
 
@@ -20,6 +22,8 @@ import { ToolbarComponent } from './pages/main-layout/components/toolbar/toolbar
     ShoppingCartComponent,
     SubLevelMenuComponent,
     ToolbarComponent,
+    SidenavComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,

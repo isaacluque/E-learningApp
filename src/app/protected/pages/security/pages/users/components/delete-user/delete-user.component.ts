@@ -15,13 +15,13 @@ export class DeleteUserComponent {
 
   @Output() Desactivar: EventEmitter<undefined> = new EventEmitter();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  // constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   private userservice = inject(UserService);
   private router = inject(Router);
 
   putBlockUser() {
-    this.userservice.putBlockUser(this.data.ID_USUARIO)
+    this.userservice.putBlockUser(this.id_user)
       .subscribe( resp => {
         if(resp.ok === true) {
           Swal.fire({

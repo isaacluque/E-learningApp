@@ -59,13 +59,13 @@ CORREO_ELECTRONICO: string = "";
     this.CORREO_ELECTRONICO = email;
   }
 
-  openDialog(user: any ) {
-    this.dialog.open(DeleteUserComponent, {
-      width: '500px',
-      height: '350px',
-      data: user,
-    });
-  }
+  // openDialog(user: any ) {
+  //   this.dialog.open(DeleteUserComponent, {
+  //     width: '500px',
+  //     height: '350px',
+  //     data: user,
+  //   });
+  // }
 
   putBlockUser() {
     this.userservice.putBlockUser(this.ID_USUARIO)

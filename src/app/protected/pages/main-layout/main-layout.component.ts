@@ -7,7 +7,7 @@ import { INavbarData } from './interfaces/helper';
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
-  styleUrls: ['../../../../styles.css'],
+  styleUrls: ['./main-layout.component.css'],
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
@@ -49,15 +49,6 @@ export class MainLayoutComponent {
 
   panelOpenState = false;
 
-  handleClick(item: INavbarData): void {
-    if(!this.multiple) {
-      for(let modelItem of this.navData) {
-        if(item !== modelItem && modelItem.expanded){
-          modelItem.expanded = false;
-        }
-      }
-    }
-    item.expanded = !item.expanded;
-  }
+
 
 }

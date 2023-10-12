@@ -1,4 +1,4 @@
-<mat-dialog-content class="mat-typography">
+<!-- <mat-dialog-content class="mat-typography">
   <div class="text-center">
     <img src="../../../../../../../../assets/warnig.png" alt="" height="220px" width="220px">
   </div>
@@ -10,4 +10,29 @@
 <mat-dialog-actions align="center">
     <button mat-raised-button mat-dialog-close>Cancel</button>
     <button mat-raised-button color="warn" [mat-dialog-close]="true" (click)="putBlockUser()" cdkFocusInitial>Accept</button>
-</mat-dialog-actions>
+</mat-dialog-actions> -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+        <button mat-icon-button type="button" color="warn" data-bs-dismiss="modal" aria-label="Close"><mat-icon>cancel</mat-icon></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <img src="../../../../../../../../assets/warnig.png" alt="" height="220px" width="220px">
+        </div>
+        <div class="text-center mt-2">
+          <strong>Are you sure I want to block the user {{user}}?</strong>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-md-center">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="putBlockUser()" data-bs-dismiss="modal">Yes, I'm sure</button>
+      </div>
+    </div>
+  </div>
+</div>
