@@ -8,6 +8,7 @@ import { DeleteUserComponent } from './pages/users/components/delete-user/delete
 import { CreateUserComponent } from './pages/users/components/create-user/create-user.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { DetailsUserComponent } from './pages/users/components/details-user/details-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { DetailsUserComponent } from './pages/users/components/details-user/deta
   imports: [
     CommonModule,
     MaterialModule,
+    ReactiveFormsModule,
     SecurityRoutingModule
   ]
 })

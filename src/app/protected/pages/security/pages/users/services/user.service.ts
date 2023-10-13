@@ -19,14 +19,12 @@ export class UserService {
 
   constructor() { }
 
-  getUsers(lim?: string, from?: string, search?: string): Observable<ViewUser[]> {
+  getUsers(lim?: string, from?: string, search?: string): Observable<RespViewUser> {
 
     const url: string = `${this.baseURL}/user/?lim=${!lim ? '' : lim}&from=${!from ? '' : from}&search=${!search ? '' : search}`;
 
     return this.http.get<RespViewUser>(url)
       .pipe(
-        map(resp => resp.ViewUser),
-        tap(console.log),
         catchError(err => throwError(() => (err.error.msg)))
       )
 
@@ -34,6 +32,14 @@ export class UserService {
 
   putBlockUser(id_user:number, ){
     const url: string = `${this.baseURL}/user/blocked/${id_user}`
+
+    return this.http.put<UserResponse>(url, {})
+      .pipe(
+        catchError(err => throwError(() => (err.error.msg)))
+      )
+  }
+  putActivateUser(id_user:number, ){
+    const url: string = `${this.baseURL}/user/actived/${id_user}`
 
     return this.http.put<UserResponse>(url, {})
       .pipe(

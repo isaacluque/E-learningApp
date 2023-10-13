@@ -7,8 +7,8 @@
   <div class="container-md bg-black rounded rounded-4">
     <div class="d-flex flex-wrap justify-content-end align-items-end pb-0 pt-3">
       <div class="contenido">
-        <form class="mt-2 mb-2">
-          <input class="form-control rounded-pill" type="text" placeholder="Search" aria-label="Search"/>
+        <form [formGroup]="myForm" (ngSubmit)="buscarRegistro()" class="mt-2 mb-2">
+          <input class="form-control rounded-pill" formControlName="search" type="text" placeholder="Search" aria-label="Search"/>
         </form>
     </div>
 
@@ -80,7 +80,7 @@
                         </button>
                       </ng-container> -->
                 <ng-container>
-                  <button mat-menu-item>
+                  <button mat-menu-item (click)="putActivateUser()">
                     <mat-icon id="custom-mat-icon">lock_open</mat-icon>
                     <span class="custom-text">To unlock</span>
                   </button>
@@ -92,14 +92,16 @@
 
       </table>
     </div>
-    <mat-paginator id="pagindor"  [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
+    <mat-paginator id="pagindor"  [length]="size"
+              [pageSize]="lim"
+              [pageSizeOptions]="[5, 10, 25, size]"
+              [pageIndex]="index"
+              (page)="cambioDePagina($event)"
               aria-label="Select page">
 </mat-paginator>
   </div>
 
-  <app-delete-user [id_user]="ID_USUARIO" [user]="USUARIO"></app-delete-user>
+  <app-delete-user (Desactivar)="recargar()" (onUpdate)="recargar()"  [id_user]="ID_USUARIO" [user]="USUARIO"></app-delete-user>
 
 </div>
 

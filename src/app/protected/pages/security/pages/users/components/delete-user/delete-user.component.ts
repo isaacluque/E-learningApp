@@ -24,6 +24,7 @@ export class DeleteUserComponent {
     this.userservice.putBlockUser(this.id_user)
       .subscribe( resp => {
         if(resp.ok === true) {
+          this.Desactivar.emit()
           Swal.fire({
             title: '¡Éxito!',
             text: resp.msg,
@@ -37,7 +38,6 @@ export class DeleteUserComponent {
             timer: 4500,
             timerProgressBar: true,
           })
-          this.router.navigateByUrl('/main/security/users')
         } else {
           Swal.fire({
             title: 'Error',
