@@ -5,7 +5,7 @@ export interface RespViewUser {
   msg?:       string;
   lim?:        number;
   countUsers?: number;
-  search?:     string;
+  buscar?:     string;
   ViewUser?:   ViewUser[];
   viewuser?: ViewUser;
 }

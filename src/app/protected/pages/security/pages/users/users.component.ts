@@ -38,6 +38,7 @@ lim:                number = 0;
 index:              number = -1;
 from:               string = "0";
 public users: ViewUser[] = [];
+mostrar = false;
 
   // Validador de busqueda
   buscando: boolean = false;
@@ -55,52 +56,71 @@ public users: ViewUser[] = [];
   })
 
    // Cambiar de página
-   cambioDePagina(evento: PageEvent) {
+  //  cambioDePagina(evento: PageEvent) {
+
+  //   // Hacer referencia al páginador
+  //   this.paginadorPorReferencia = evento
+
+  //   // Datos requeridos
+  //   let { search } = this.myForm.value;
+
+  //   // Si no se esta buscando no se envia nada
+  //   if (!this.buscando) {
+  //     search = ""
+  //   }
+
+  //   // Calcular posición de página
+  //   let from: string = (evento.pageIndex * evento.pageSize).toString();
+  //   this.from = from
+
+  //   // Consumo
+  //   this.userservice.getUsers(search, evento.pageSize.toString(), this.from)
+  //     .subscribe(
+  //       resp => {
+  //         this.users = resp.ViewUser!
+  //         this.size = resp.countUsers!
+  //         this.lim = resp.lim!
+  //       }
+  //     )
+  // }
+
+
+  onPageChange(event: PageEvent) {
 
     // Hacer referencia al páginador
-    this.paginadorPorReferencia = evento
+    this.paginadorPorReferencia = event;
 
-    // Datos requeridos
-    let { search } = this.myForm.value;
+    let fromm: string = (event.pageIndex * event.pageSize).toString();
+    this.from = fromm;
 
-    // Si no se esta buscando no se envia nada
-    if (!this.buscando) {
-      search = ""
-    }
-
-    // Calcular posición de página
-    let from: string = (evento.pageIndex * evento.pageSize).toString();
-    this.from = from
-
-    // Consumo
-    this.subscripcion = this.userservice.getUsers(search, evento.pageSize.toString(), this.from)
+    this.userservice.getUsers(event.pageSize.toString(), fromm)
       .subscribe(
         resp => {
           this.users = resp.ViewUser!
           this.size = resp.countUsers!
-          this.lim = resp.lim!
         }
       )
+
   }
 
   // Cuando se presione Enter en la casilla buscar
   buscarRegistro() {
     // Si se ha cambiado el páginador
-    if (this.paginadorPorReferencia) {
-      this.index = -1;
-    }
+    // if (this.paginadorPorReferencia) {
+    //   this.index = -1;
+    // }
 
-    // Datos requeridos
+    // // Datos requeridos
     let { search } = this.myForm.value;
 
-    // Para evitar conflictos con el páginador
-    if (search !== "") {
-      this.buscando = true
-    } else {
-      this.buscando = false
-    }
+    // // Para evitar conflictos con el páginador
+    // if (search !== "") {
+    //   this.buscando = true
+    // } else {
+    //   this.buscando = false
+    // }
 
-    this.from = "0"
+    // this.from = "0"
 
     // Consumo
     this.subscripcion = this.userservice.getUsers(search)
@@ -112,6 +132,7 @@ public users: ViewUser[] = [];
           this.lim = resp.lim!
         }
       )
+
   }
 
 
@@ -214,6 +235,13 @@ public users: ViewUser[] = [];
       }
 
     )
+  }
+
+  getUser(id_user: number) {
+    this.userservice.getUser(id_user)
+      .subscribe(
+
+      )
   }
 
   recargar() {

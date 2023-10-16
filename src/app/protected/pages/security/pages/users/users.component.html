@@ -7,7 +7,7 @@
   <div class="container-md bg-black rounded rounded-4">
     <div class="d-flex flex-wrap justify-content-end align-items-end pb-0 pt-3">
       <div class="contenido">
-        <form [formGroup]="myForm" (ngSubmit)="buscarRegistro()" class="mt-2 mb-2">
+        <form [formGroup]="myForm" (keyup)="buscarRegistro()" class="mt-2 mb-2">
           <input class="form-control rounded-pill" formControlName="search" type="text" placeholder="Search" aria-label="Search"/>
         </form>
     </div>
@@ -56,7 +56,7 @@
               </button>
               <mat-menu #menu="matMenu" class="custom-menu">
                 <ng-container>
-                  <button mat-menu-item>
+                  <button mat-menu-item (click)="getUser(user.ID_USUARIO)">
                     <mat-icon id="custom-mat-icon">text_snippet</mat-icon>
                     <span class="custom-text">See more</span>
                   </button>
@@ -92,16 +92,17 @@
 
       </table>
     </div>
-    <mat-paginator id="pagindor"  [length]="size"
+    <mat-paginator id="pagindor"
+              [length]="size"
               [pageSize]="lim"
-              [pageSizeOptions]="[5, 10, 25, size]"
-              [pageIndex]="index"
-              (page)="cambioDePagina($event)"
+              [pageSizeOptions]="[1, 10, 25, size]"
+              (page)="onPageChange($event)"
               aria-label="Select page">
 </mat-paginator>
   </div>
 
   <app-delete-user (Desactivar)="recargar()" (onUpdate)="recargar()"  [id_user]="ID_USUARIO" [user]="USUARIO"></app-delete-user>
+  <app-details-user></app-details-user>
 
 </div>
 
