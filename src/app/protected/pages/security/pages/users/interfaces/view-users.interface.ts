@@ -7,7 +7,7 @@ export interface RespViewUser {
   countUsers?: number;
   buscar?:     string;
   ViewUser:   ViewUser[];
-  user?: ViewUser[];
+  user: ViewUser;
   // viewuser: ViewUser;
 }
 

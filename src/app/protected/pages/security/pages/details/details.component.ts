@@ -19,28 +19,19 @@ export class DetailsComponent implements OnInit {
 
   private route = inject(ActivatedRoute);
 
-  public person!: ViewUser[];
+  public person!: User;
 
-  // mostrar(){
-  //   this.route.params
-  //     .pipe(
-  //       switchMap(({id_user}) => this.detailsUser.getUser(id_user))
-  //     )
-  //     .subscribe(User => {
+  public id_user: number = 0;
 
-  //       this.person = User?.ViewUser?.[0] ?? {};
-  //     })
-  // }
+  mostrar(){
+    this.route.params.subscribe(params => {
+      this.id_user = params['id_user']
+    })
 
-  mostrar() {
-    this.route.params.subscribe(async ({id_user}) => {
-      try {
-        const userDetails = await this.detailsUser.getUser(id_user);
-        this.person = userDetails?.user?.[0];
-      } catch(err) {
-        console.error(`Error retrieving user details (${id_user}): ${err}`);
-      }
-    });
+    this.detailsUser.getUser(this.id_user).subscribe(user => {
+        this.person = user.user;
+      })
   }
+
 
 }

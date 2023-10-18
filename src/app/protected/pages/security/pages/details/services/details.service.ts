@@ -29,10 +29,10 @@ export class DetailsService {
   //   FECHA_MODIFICACION: new Date(),
   // }
 
-  getUser(id_user: string): Observable<RespViewUser> {
+  getUser(id_user: number): Observable<UserIDResponse> {
     const url: string = `${this.baseURL}/user/${id_user}`;
 
-    return this.http.get<RespViewUser>(url)
+    return this.http.get<UserIDResponse>(url)
       .pipe(
         catchError(err => throwError(() => (err.error.msg)))
       )
