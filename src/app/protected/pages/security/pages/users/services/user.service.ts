@@ -44,14 +44,14 @@ export class UserService {
 
   }
 
-  getUser(id_user: number): Observable<RespViewUser> {
-    const url: string = `${this.baseURL}/user/${id_user}`;
+  // getUser(id_user: number): Observable<RespViewUser[]> {
+  //   const url: string = `${this.baseURL}/user/${id_user}`;
 
-    return this.http.get<UserResponse>(url)
-      .pipe(
-        catchError(err => throwError(() => (err.error.msg)))
-      )
-  }
+  //   return this.http.get<UserResponse>(url)
+  //     .pipe(
+  //       catchError(err => throwError(() => (err.error.msg)))
+  //     )
+  // }
 
   putBlockUser(id_user:number, ){
     const url: string = `${this.baseURL}/user/blocked/${id_user}`

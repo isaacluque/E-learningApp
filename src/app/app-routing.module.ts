@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    canActivate: [validateTokenAdminGuard],
+    // canActivate: [validateTokenAdminGuard],
     loadChildren: () => import('./protected/protected.module'). then(m => m.ProtectedModule)
   },
   {

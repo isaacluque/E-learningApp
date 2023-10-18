@@ -17,7 +17,7 @@ export const navbarData: INavbarData[] = [
     label: 'Security',
     items: [
       {
-        routeLink: 'security/users',
+        routeLink: 'security/user',
         label: 'Users',
         icon: 'person_outline'
       }

@@ -48,6 +48,7 @@ mostrar = false;
 
   private fb = inject(FormBuilder);
   private userservice = inject(UserService);
+  private router = inject(Router);
 
   subscripcion!: Subscription;
 
@@ -238,10 +239,7 @@ mostrar = false;
   }
 
   getUser(id_user: number) {
-    this.userservice.getUser(id_user)
-      .subscribe(
-
-      )
+    this.router.navigateByUrl(`main/security/user/details/${id_user}`);
   }
 
   recargar() {

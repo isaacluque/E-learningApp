@@ -6,8 +6,9 @@ export interface RespViewUser {
   lim?:        number;
   countUsers?: number;
   buscar?:     string;
-  ViewUser?:   ViewUser[];
-  viewuser?: ViewUser;
+  ViewUser:   ViewUser[];
+  user?: ViewUser[];
+  // viewuser: ViewUser;
 }
 
 export interface ViewUser {
