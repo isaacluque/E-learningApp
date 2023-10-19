@@ -25,4 +25,5 @@ export interface ViewUser {
   FECHA_CREACION:     string;
   MODIFICADO_POR:     string;
   FECHA_MODIFICACION: string;
+  IMAGEN:             string;
 }

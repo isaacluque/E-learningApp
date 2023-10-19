@@ -18,6 +18,6 @@ export interface User {
   FECHA_CREACION:     Date;
   MODIFICADO_POR:     string;
   FECHA_MODIFICACION: Date;
+  IMAGEN:             Blob;
+  MIMETYPE:           string;
 }
-
-

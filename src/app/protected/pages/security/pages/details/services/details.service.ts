@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { environment } from 'src/app/environments/environments';
@@ -37,5 +37,18 @@ export class DetailsService {
         catchError(err => throwError(() => (err.error.msg)))
       )
   }
+
+  // getImageUser(id_user: number): Observable<UserIDResponse> {
+  //   const url: string = `${this.baseURL}/upload/${id_user}`;
+
+  //   return this.http.get<UserIDResponse>(url)
+  //     .pipe(
+  //       catchError(err => throwError(() => (err.error.msg)))
+  //     )
+  // }
+
+  // getImageUser(id: number): Observable<Blob> {
+  //   return this.http.get<Blob>(`${this.baseURL}/${id}`, { responseType: 'blob' });
+  // }
 
 }
