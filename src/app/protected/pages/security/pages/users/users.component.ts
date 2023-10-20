@@ -99,6 +99,7 @@ mostrar = false;
         resp => {
           this.users = resp.ViewUser!
           this.size = resp.countUsers!
+
         }
       )
 
@@ -142,6 +143,12 @@ mostrar = false;
       this.users = resp.ViewUser!
       this.lim = resp.lim!
       this.size = resp.countUsers!
+
+      this.users.forEach(user => {
+        if (!user.IMAGEN) {
+          user.IMAGEN = '../../../../../../../../assets/profile-42914_1280.png';
+        }
+      });
     });
   }
 

@@ -1,6 +1,11 @@
 .backgrond {
   width: 100%;
   min-height:calc(100% - 75px);
+  background: #0b1727;
+}
+
+body{
+  background-color: #0b1727;
 }
 
 .calcular {

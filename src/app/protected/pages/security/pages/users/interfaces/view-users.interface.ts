@@ -20,7 +20,6 @@ export interface ViewUser {
   ROL:                string;
   ULTIMA_CONEXION:    string;
   CORREO_ELECTRONICO: string;
-  // IMAGEN:             string;
   CREADO_POR:         string;
   FECHA_CREACION:     string;
   MODIFICADO_POR:     string;

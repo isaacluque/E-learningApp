@@ -3,7 +3,7 @@
   <br>
   <br>
   <br>
-    <h3>USERS</h3>
+    <h3 style="color: white;">USERS</h3>
   <div class="container-md bg-black rounded rounded-4">
     <div class="d-flex flex-wrap justify-content-end align-items-end pb-0 pt-3">
       <div class="contenido">
@@ -48,7 +48,12 @@
             <td class="text-break" data-title="Rol">{{user.ROL}}</td>
             <td class="text-break" data-title="Última Conexión">{{user.ULTIMA_CONEXION}}</td>
             <td class="text-break" data-title="Correo Electronico">{{user.CORREO_ELECTRONICO}}</td>
-            <td class="text-break" data-title="Imagen"></td>
+            <td class="text-break" data-title="Imagen"><img
+              [src]="user.IMAGEN"
+              height="50"
+              width="50"
+              class="rounded-circle mr-2 mx-1"
+            /></td>
             <td class="text-break" data-title="Acción">
               <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
                 (click)="selection(user.ID_USUARIO, user.USUARIO, user.NOMBRE_USUARIO, user.ESTADO, user.ID_ROL, user.ROL, user.CORREO_ELECTRONICO)">

@@ -43,6 +43,7 @@ export class MainLayoutComponent {
   get email(): string{
     return this.authService.emailUser;
   }
+
   onLogout(){
     this.authService.logout();
   }

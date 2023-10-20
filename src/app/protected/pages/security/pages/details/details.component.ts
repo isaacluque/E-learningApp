@@ -20,9 +20,7 @@ export class DetailsComponent implements OnInit {
 
   private route = inject(ActivatedRoute);
 
-  public person: User| null = null;;
-
-  public imageUrl!: string;
+  public person!: ViewUser;
 
   public id_user: number = 0;
 
@@ -32,13 +30,10 @@ export class DetailsComponent implements OnInit {
     })
 
     this.detailsUser.getUser(this.id_user).subscribe(user => {
-      this.person = user?.user ?? null
-
-      // Convertir la propiedad `IMAGEN` a un objeto `File`
-    const file = new File([this.person.IMAGEN], `${this.person.MIMETYPE}`);
-
-    // Actualizar la variable `userIDResponse`
-    this.person.IMAGEN = file;
+      this.person = user?.user
+      if (!this.person.IMAGEN) {
+        this.person.IMAGEN = '../../../../../../../../assets/profile-42914_1280.png';
+      }
     })
   }
 }

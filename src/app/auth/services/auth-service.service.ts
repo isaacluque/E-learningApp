@@ -21,6 +21,8 @@ export class AuthServiceService {
 
    emailUser!: string;
 
+   id_user!: number;
+
   private readonly baseURL: string = environment.baseURL;
 
   private http = inject(HttpClient);
@@ -40,6 +42,7 @@ export class AuthServiceService {
     localStorage.setItem('token', token);
     this.nameUser = User.NOMBRE_USUARIO;
     this.emailUser = User.CORREO_ELECTRONICO;
+    this.id_user = User.ID_USUARIO;
     return true;
   }
 
