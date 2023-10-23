@@ -33,15 +33,17 @@ ESTADO:             string = "";
 ID_ROL:             number = 0;
 ROL:                string = "";
 CORREO_ELECTRONICO: string = "";
+
 size:               number = 0;
 lim:                number = 0;
 index:              number = -1;
 from:               string = "0";
 public users: ViewUser[] = [];
-mostrar = false;
 
-  // Validador de busqueda
-  buscando: boolean = false;
+// Validador de busqueda
+buscando: boolean = false;
+
+mostrar = false;
 
   // Referencia para páginador
   paginadorPorReferencia!: PageEvent;
@@ -52,54 +54,36 @@ mostrar = false;
 
   subscripcion!: Subscription;
 
-  public myForm: FormGroup = this.fb.group({
+  myForm: FormGroup = this.fb.group({
     search: ['', [Validators.required, Validators.maxLength(100)]],
   })
-
-   // Cambiar de página
-  //  cambioDePagina(evento: PageEvent) {
-
-  //   // Hacer referencia al páginador
-  //   this.paginadorPorReferencia = evento
-
-  //   // Datos requeridos
-  //   let { search } = this.myForm.value;
-
-  //   // Si no se esta buscando no se envia nada
-  //   if (!this.buscando) {
-  //     search = ""
-  //   }
-
-  //   // Calcular posición de página
-  //   let from: string = (evento.pageIndex * evento.pageSize).toString();
-  //   this.from = from
-
-  //   // Consumo
-  //   this.userservice.getUsers(search, evento.pageSize.toString(), this.from)
-  //     .subscribe(
-  //       resp => {
-  //         this.users = resp.ViewUser!
-  //         this.size = resp.countUsers!
-  //         this.lim = resp.lim!
-  //       }
-  //     )
-  // }
-
 
   onPageChange(event: PageEvent) {
 
     // Hacer referencia al páginador
     this.paginadorPorReferencia = event;
 
-    let fromm: string = (event.pageIndex * event.pageSize).toString();
-    this.from = fromm;
+    let { search } = this.myForm.value;
 
-    this.userservice.getUsers(event.pageSize.toString(), fromm)
+    if(!this.buscando) {
+      search = "";
+    }
+
+    let from: string = (event.pageIndex * event.pageSize).toString();
+    this.from = from;
+
+    this.userservice.getUsers(search, event.pageSize.toString(), from)
       .subscribe(
         resp => {
-          this.users = resp.ViewUser!
+          // this.users = resp.ViewUser!
           this.size = resp.countUsers!
+          this.lim = resp.lim!
 
+          this.users.forEach(user => {
+            if (!user.IMAGEN) {
+              user.IMAGEN = '../../../../../../../../assets/profile-42914_1280.png';
+            }
+          });
         }
       )
 
@@ -108,21 +92,21 @@ mostrar = false;
   // Cuando se presione Enter en la casilla buscar
   buscarRegistro() {
     // Si se ha cambiado el páginador
-    // if (this.paginadorPorReferencia) {
-    //   this.index = -1;
-    // }
+    if (this.paginadorPorReferencia) {
+      this.index = -1;
+    }
 
     // // Datos requeridos
     let { search } = this.myForm.value;
 
-    // // Para evitar conflictos con el páginador
+    // // // Para evitar conflictos con el páginador
     // if (search !== "") {
     //   this.buscando = true
     // } else {
     //   this.buscando = false
     // }
 
-    // this.from = "0"
+    this.from = "0"
 
     // Consumo
     this.subscripcion = this.userservice.getUsers(search)
@@ -132,6 +116,12 @@ mostrar = false;
           this.users = resp.ViewUser!
           this.size = resp.countUsers!
           this.lim = resp.lim!
+
+          this.users.forEach(user => {
+            if (!user.IMAGEN) {
+              user.IMAGEN = '../../../../../../../../assets/profile-42914_1280.png';
+            }
+          });
         }
       )
 
@@ -253,12 +243,18 @@ mostrar = false;
 
     let { search } = this.myForm.value;
 
-    this.userservice.getUsers(search,this.lim.toString(), this.from)
+    this.userservice.getUsers(search, this.lim.toString(), this.from)
       .subscribe(
         ViewUser => {
           this.users = ViewUser.ViewUser!
           this.size = ViewUser.countUsers!
           this.lim = ViewUser.lim!
+
+          this.users.forEach(user => {
+            if (!user.IMAGEN) {
+              user.IMAGEN = '../../../../../../../../assets/profile-42914_1280.png';
+            }
+          });
         }
       )
   }

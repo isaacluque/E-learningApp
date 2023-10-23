@@ -44,10 +44,6 @@ export class MainLayoutComponent {
     return this.authService.emailUser;
   }
 
-  onLogout(){
-    this.authService.logout();
-  }
-
   panelOpenState = false;
 
 

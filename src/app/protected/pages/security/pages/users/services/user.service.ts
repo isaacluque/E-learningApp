@@ -19,25 +19,15 @@ export class UserService {
 
   constructor() { }
 
-  getUsers(lim?: string, from?: string, buscar?: string): Observable<RespViewUser> {
+  getUsers(search?: string, lim?: string, from?: string, ): Observable<RespViewUser> {
 
-    let params = new HttpParams();
-
-    if (lim !== undefined && lim !== null) {
-      params = params.append('lim', lim.toString());
+    if(!search) {
+      search = ""
     }
 
-    if (from !== undefined && from !== null) {
-      params = params.append('from', from.toString());
-    }
+    const url: string = `${this.baseURL}/user/?search=${search}&lim=${!lim ? '' : lim}&from=${!from ? '' : from}`;
 
-    if (buscar !== undefined) {
-      params = params.append('buscar', buscar);
-    }
-
-    // const url: string = `${this.baseURL}/user/?lim=${!lim ? '' : lim}&from=${!from ? '' : from}&search=${!search ? '' : search}`;
-
-    return this.http.get<RespViewUser>(`${this.baseURL}/user`,{params})
+    return this.http.get<RespViewUser>(url)
       .pipe(
         catchError(err => throwError(() => (err.error.msg)))
       )

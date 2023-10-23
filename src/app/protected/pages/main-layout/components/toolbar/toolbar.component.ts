@@ -9,15 +9,17 @@ import { ViewUser } from '../../../security/pages/users/interfaces/view-users.in
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit{
-  ngOnInit(): void {
-    this.mostrar();
-  }
+
   hideForm = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     // Lógica para ocultar el formulario en pantallas pequeñas
     this.hideForm = window.innerWidth < 576; // Por ejemplo, ocultar en pantallas menores a 576px de ancho (tamaño de pantalla de dispositivos móviles)
+  }
+
+  ngOnInit(): void {
+    this.mostrar();
   }
 
   private authService = inject(AuthServiceService);
@@ -35,8 +37,10 @@ export class ToolbarComponent implements OnInit{
         this.person.IMAGEN = '../../../../../../../../assets/profile-42914_1280.png';
       }
     })
+  }
 
-
+  onLogout(){
+    this.authService.logout();
   }
 
   public hide = true;

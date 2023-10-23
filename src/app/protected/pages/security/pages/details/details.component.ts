@@ -1,11 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetailsService } from './services/details.service';
-import { User } from './interfaces/details-user';
-import { switchMap } from 'rxjs';
 import { ViewUser } from '../users/interfaces/view-users.interface';
-import { UserService } from '../users/services/user.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-details',

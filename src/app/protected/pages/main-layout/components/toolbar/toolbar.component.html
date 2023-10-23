@@ -1,38 +1,4 @@
-<!--
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3 ps-0">
-      <div class="d-flex align-items-center h-100">
-
-      </div>
-      <button mat-icon-button class="btn-sidenav" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" id="btnMenu">
-
-            <mat-icon>menu</mat-icon>
-
-          </button>
-    </div>
-
-    <div class="col-6 ">
-      <div class="d-flex justify-content-center align-items-center" style="height: 100%">
-        <a class="nav-link mx-2 pt-0" routerLink="/main/courses" id="logoDashboard">
-          <img src="../../../../assets/img/logo.png" height="45" width="100" alt="" />
-        </a>
-      </div>
-    </div>
-
-    <div class="col-3">
-      <form [class.d-none.d-sm-block]="hideForm">
-        <div class="row">
-          <div class="col">
-            <input class="form-control me-2 rounded-pill" type="text" placeholder="Search" aria-label="Search" />
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
 
 <mat-toolbar color="primary">
   <button mat-icon-button class="btn-sidenav" type="button" data-bs-toggle="offcanvas"
@@ -79,7 +45,7 @@
     <app-notification></app-notification>
   </div>
 
-  <div class="dropdown">
+  <div class="dropdown" *ngIf="person">
     <a
       class="nav-link align-middle"
       href="#"
@@ -136,7 +102,7 @@
         >
       </li>
       <li>
-        <a class="dropdown-item"
+        <a class="dropdown-item" (click)="onLogout()"
           ><mat-icon>logout</mat-icon><b> Logout</b></a
         >
       </li>
