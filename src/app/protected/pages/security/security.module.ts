@@ -9,6 +9,7 @@ import { CreateUserComponent } from './pages/users/components/create-user/create
 import { MaterialModule } from 'src/app/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './pages/details/details.component';
+import { RoleComponent } from './pages/role/role.component';
 
 
 
@@ -19,6 +20,7 @@ import { DetailsComponent } from './pages/details/details.component';
     DeleteUserComponent,
     CreateUserComponent,
     DetailsComponent,
+    RoleComponent,
   ],
   imports: [
     CommonModule,

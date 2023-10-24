@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createuser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,11 +7,48 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <mat-tab-group>
+          <mat-tab label="Student">
+            <form id="form1" autocomplete="off" class="mt-2">
+              <div class="mb-3">
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Enter your email</mat-label>
+                  <input matInput formControlName="email" placeholder="karlasmith@example.com" data-bs-toggle="tooltip"
+                    data-bs-placement="top" data-bs-title="Tooltip on top" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="password" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Username</mat-label>
+                  <input matInput formControlName="username" placeholder="KarlaSmith" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Select a Role</mat-label>
+                  <mat-select formControlName="id_rol" required>
+                    <mat-option *ngFor="let role of roles" [value]="role.ID_ROL" >
+                      {{role.ROL}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Name</mat-label>
+                  <input matInput formControlName="name" placeholder="Karla Smith" required>
+                </mat-form-field>
+              </div>
+            </form>
+          </mat-tab>
+          <mat-tab label="Second">
+            <form id="form2">
+              <label>Hello</label>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="ejecutarFuncion()">Save</button>
       </div>
     </div>
   </div>

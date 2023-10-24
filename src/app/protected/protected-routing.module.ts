@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { validateTokenAdminGuard } from '../auth/guards/validate-token.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
     },
     {
       path:'security',
-      loadChildren: () => import('../protected/pages/security/security.module').then(m => m.SecurityModule)
+      loadChildren: () => import('../protected/pages/security/security.module').then(m => m.SecurityModule),
+      canActivate: [validateTokenAdminGuard]
     },
     {
       path:'notification',

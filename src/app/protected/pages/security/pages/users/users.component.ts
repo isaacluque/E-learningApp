@@ -75,7 +75,7 @@ mostrar = false;
     this.userservice.getUsers(search, event.pageSize.toString(), from)
       .subscribe(
         resp => {
-          // this.users = resp.ViewUser!
+          this.users = resp.ViewUser!
           this.size = resp.countUsers!
           this.lim = resp.lim!
 

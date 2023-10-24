@@ -13,7 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 
@@ -33,7 +33,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatCheckboxModule,
     MatDialogModule,
     MatListModule,
-
+    MatTabsModule,
 
     MatExpansionModule,
   ]
