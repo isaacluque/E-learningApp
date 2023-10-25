@@ -19,7 +19,7 @@
             <span><a routerLink="/auth/login"> Login</a></span>
           </div>
         </div>
-        <form id="form1" [formGroup]="myForm" (ngSubmit)="postStudentNormal()" autocomplete="off">
+        <form [formGroup]="myForm" (ngSubmit)="postStudentNormal()" autocomplete="off">
           <div class="mb-3">
             <mat-form-field class="custom-form-field">
               <mat-label>Enter your email</mat-label>

@@ -7,12 +7,12 @@ export const navbarData: INavbarData[] = [
     label: 'Dashboard'
   },
   {
-    routeLink: '',
+    routeLink: 'courses',
     icon: 'school',
     label: 'Courses'
   },
   {
-    routeLink: '',
+    routeLink: 'security',
     icon: 'security',
     label: 'Security',
     items: [

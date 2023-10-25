@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="createuser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="createuser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
@@ -9,7 +9,7 @@
       <div class="modal-body">
         <mat-tab-group>
           <mat-tab label="Student">
-            <form id="form1" autocomplete="off" class="mt-2">
+            <form id="form1" [formGroup]="myForm1" (ngSubmit)="postUserMaintenance()" autocomplete="off" class="mt-2">
               <div class="mb-3">
                 <mat-form-field class="custom-form-field">
                   <mat-label>Enter your email</mat-label>
@@ -18,8 +18,11 @@
                 </mat-form-field>
                 <mat-form-field class="custom-form-field">
                   <mat-label>Password</mat-label>
-                  <input matInput formControlName="password" required>
+                  <input matInput formControlName="password" value="{{generatepassword}}" required>
                 </mat-form-field>
+                <div class="mb-3">
+                  <button mat-raised-button (click)="generatePassword()" [disabled]="generando" color="warn">Generate Password<mat-icon>lock</mat-icon></button>
+                </div>
                 <mat-form-field class="custom-form-field">
                   <mat-label>Username</mat-label>
                   <input matInput formControlName="username" placeholder="KarlaSmith" required>
@@ -37,19 +40,82 @@
                   <input matInput formControlName="name" placeholder="Karla Smith" required>
                 </mat-form-field>
               </div>
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" [disabled]="myForm1.invalid" data-bs-dismiss="modal">Create User</button>
+              </div>
             </form>
           </mat-tab>
           <mat-tab label="Second">
-            <form id="form2">
-              <label>Hello</label>
+            <form [formGroup]="myForm2" (ngSubmit)="postPYMEMaintenance()" autocomplete="off">
+              <div class="mb-3">
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Enter your email</mat-label>
+                  <input matInput formControlName="email" placeholder="pat@example.com" autocomplete="off" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="password" autocomplete="off" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Username</mat-label>
+                  <input matInput formControlName="username" placeholder="CompanyExample" autocomplete="off" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Name</mat-label>
+                  <input matInput formControlName="name" placeholder="Company Example" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Telephone</mat-label>
+                  <input matInput formControlName="phone_number" autocomplete="off" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Company Name</mat-label>
+                  <input matInput formControlName="company_name" placeholder="Company Example" autocomplete="off" required>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Company Size</mat-label>
+                  <mat-select formControlName="company_size" required>
+                    <div class="cdk-overlay-container"></div>
+                    <ng-container *ngFor="let companysize of listcompanySize">
+                      <mat-option [value]="companysize.ID_TAMANO_EMPRESA">
+                        {{companysize.TAMANO_EMPRESA}}
+                      </mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Location</mat-label>
+                  <mat-select formControlName="location" required>
+                    <div class="cdk-overlay-container"></div>
+                    <ng-container *ngFor="let locations of listlocation">
+                      <mat-option [value]="locations.ID_UBICACION">
+                        {{locations.NOMBRE_CORTO}}
+                      </mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="custom-form-field">
+                  <mat-label>Select Status</mat-label>
+                  <mat-select formControlName="status">
+                    <mat-option value="PENDING">Pending</mat-option>
+                    <mat-option value="ACTIVE">Active</mat-option>
+                    <mat-option value="BLOCKED">Blocked</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" [disabled]="myForm2.invalid" data-bs-dismiss="modal">Register</button>
+              </div>
             </form>
           </mat-tab>
         </mat-tab-group>
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="ejecutarFuncion()">Save</button>
-      </div>
+        <button type="button" class="btn btn-primary" (click)="ejecutarFuncion()" data-bs-dismiss="modal" [disabled]="myForm.invalid">Save</button>
+      </div> -->
     </div>
   </div>
 </div>

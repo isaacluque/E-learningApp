@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Inject, Input, Output, inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,10 +14,7 @@ export class DeleteUserComponent {
 
   @Output() Desactivar: EventEmitter<undefined> = new EventEmitter();
 
-  // constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
-
   private userservice = inject(UserService);
-  private router = inject(Router);
 
   putBlockUser() {
     this.userservice.putBlockUser(this.id_user)

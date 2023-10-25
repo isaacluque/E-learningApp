@@ -2,7 +2,6 @@
   <br>
   <br>
   <br>
-  <br>
     <h3 style="color: white;">USERS</h3>
   <div class="container-md bg-black rounded rounded-4">
 
@@ -114,7 +113,7 @@
   </div>
 
   <app-delete-user (Desactivar)="recargar()" (onUpdate)="recargar()"  [id_user]="ID_USUARIO" [user]="USUARIO"></app-delete-user>
-  <app-create-user></app-create-user>
+  <app-create-user (Crear)="recargar()" (onUpdate)="recargar()"></app-create-user>
 
 </div>
 
