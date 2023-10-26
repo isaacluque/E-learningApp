@@ -38,17 +38,13 @@ export class DetailsService {
       )
   }
 
-  getImageUser(id_user: number): Observable<UserIDResponse> {
-    const url: string = `${this.baseURL}/upload/${id_user}`;
+  // getImageUser(id_user: number): Observable<UserIDResponse> {
+  //   const url: string = `${this.baseURL}/upload/${id_user}`;
 
-    return this.http.get<UserIDResponse>(url)
-      .pipe(
-        catchError(err => throwError(() => (err.error.msg)))
-      )
-  }
-
-  // getImageUser(id: number): Observable<Blob> {
-  //   return this.http.get<Blob>(`${this.baseURL}/${id}`, { responseType: 'blob' });
+  //   return this.http.get<UserIDResponse>(url)
+  //     .pipe(
+  //       catchError(err => throwError(() => (err.error.msg)))
+  //     )
   // }
 
 }

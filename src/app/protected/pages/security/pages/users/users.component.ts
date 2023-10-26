@@ -239,6 +239,10 @@ mostrar = false;
     this.router.navigateByUrl(`main/security/user/details/${id_user}`);
   }
 
+  putUser(id_user: number) {
+    this.router.navigateByUrl(`main/security/user/edit/${id_user}`);
+  }
+
   recargar() {
 
     let { search } = this.myForm.value;

@@ -37,7 +37,7 @@
         <thead>
           <tr>
             <th>Usuario</th>
-            <th>Nombre</th>
+            <th>Nombre Usuario</th>
             <th>Estado</th>
             <th>Rol</th>
             <th>Última Conexión</th>
@@ -49,7 +49,7 @@
         <tbody class="table-group-divider">
           <tr *ngFor="let user of users">
             <td class="text-break" data-title="Usuario">{{user.USUARIO}}</td>
-            <td class="text-break" data-title="Nombre">{{user.NOMBRE_USUARIO}}</td>
+            <td class="text-break" data-title="Nombre Usuario">{{user.NOMBRE_USUARIO}}</td>
             <td class="text-break" data-title="Estado">{{user.ESTADO}}</td>
             <td class="text-break" data-title="Rol">{{user.ROL}}</td>
             <td class="text-break" data-title="Última Conexión">{{user.ULTIMA_CONEXION}}</td>
@@ -73,7 +73,7 @@
                   </button>
                 </ng-container>
                 <ng-container>
-                  <button mat-menu-item>
+                  <button mat-menu-item data-bs-toggle="modal" data-bs-target="#editUserModal">
                     <mat-icon id="custom-mat-icon">edit</mat-icon>
                     <span class="custom-text">Edit</span>
                   </button>
@@ -113,7 +113,8 @@
   </div>
 
   <app-delete-user (Desactivar)="recargar()" (onUpdate)="recargar()"  [id_user]="ID_USUARIO" [user]="USUARIO"></app-delete-user>
-  <app-create-user (Crear)="recargar()" (onUpdate)="recargar()"></app-create-user>
+  <app-create-user (Crear)="recargar()" (onCreate)="recargar()"></app-create-user>
+  <app-edit-user [id_user]="ID_USUARIO" [user]="USUARIO" [username]="NOMBRE_USUARIO" [status]="ESTADO" [id_role]="ID_ROL" [email]="CORREO_ELECTRONICO"></app-edit-user>
 
 </div>
 

@@ -1,1 +1,48 @@
 <p>edit-user works!</p>
+<!-- Modal -->
+<div class="modal fade" id="editUserModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User: {{user}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <mat-form-field class="custom-form-field">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Karla Smith" [value]="user">
+          </mat-form-field>
+          <mat-form-field class="custom-form-field">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" placeholder="KarlaSmith" [value]="username">
+          </mat-form-field>
+          <mat-form-field class="custom-form-field">
+            <mat-label>Select Status</mat-label>
+            <mat-select formControlName="status" [value]="status">
+              <mat-option value="PENDING">Pending</mat-option>
+              <mat-option value="ACTIVE">Active</mat-option>
+              <mat-option value="BLOCKED">Blocked</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="custom-form-field">
+            <mat-label>Select a Role</mat-label>
+            <mat-select formControlName="id_rol" [value]="id_role">
+              <mat-option *ngFor="let role of roles" [value]="role.ID_ROL">
+                {{role.ROL}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="custom-form-field">
+            <mat-label>Enter your email</mat-label>
+            <input matInput formControlName="email" placeholder="pat@example.com" autocomplete="off" [value]="email">
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

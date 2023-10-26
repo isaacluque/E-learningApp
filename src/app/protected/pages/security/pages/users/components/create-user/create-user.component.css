@@ -1,3 +1,11 @@
 ::ng-deep .cdk-overlay-container {
   z-index: 9999 !important;
 }
+
+:host ::ng-deep .mat-mdc-select-value-text{
+  color: #000000;
+}
+
+:host ::ng-deep .mat-mdc-select-arrow svg {
+  fill: rgb(0, 0, 0);
+}

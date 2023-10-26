@@ -1,0 +1,23 @@
+.modal-body {
+  background: rgb(238, 238, 238);
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+.col {
+  height: 100%;
+}
+
+:host ::ng-deep .mat-mdc-select-value-text{
+  color: #000000;
+}
+
+:host ::ng-deep .mat-mdc-select-arrow svg {
+  fill: rgb(0, 0, 0);
+}
